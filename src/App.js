@@ -8,6 +8,11 @@ import {
 import logo from "./logo.svg";
 import Header from "./Components/Header.jsx";
 import Footer from "./Components/Footer.jsx";
+import Register from "./Components/Registration.jsx";
+import Login from "./Components/Login.jsx";
+import ForgotPassword from "./Components/ForgotPassword.jsx";
+import ResetPassword from "./Components/ResetPassword.jsx";
+import VerifyEmail from "./Components/VerifyEmail.jsx";
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +27,14 @@ class App extends Component {
         <Switch>
           <Route path="/header" component={Header}></Route>
           <Route path="/footer" component={Footer}></Route>
+          <Route path="/register" component={Register}></Route>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/forgotPassword" component={ForgotPassword}></Route>
+          <Route
+            path="/user/resetpassword/:token"
+            component={ResetPassword}
+          ></Route>
+          <Route path="/verify/:token" component={VerifyEmail}></Route>
         </Switch>
       </Router>
     );
