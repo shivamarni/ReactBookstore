@@ -36,7 +36,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Footer />
+        {/* <Footer /> */}
         <div>
           <Card id="appbar-card">
             <div className="appbar-card-div">
@@ -81,6 +81,7 @@ class Header extends Component {
                 </div>
                 <div className="profile-avatar">
                   <Avatar
+                    style={{ height: "35px" }}
                     src="/broken-image.jpg"
                     onClick={this.handleAvatarClick}
                   />
