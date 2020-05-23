@@ -89,7 +89,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
-  margin-top: 10px;
+  margin-top: 0px;
   font: Regular 16px/19px Lato;
 }
 .div-author {
@@ -97,7 +97,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
-  margin-top: 3px;
+  margin-top: 0px;
   font: 12px lato;
   color: #9d9d9d;
   opacity: 1;
@@ -108,7 +108,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
-  margin-top: 10px;
+  margin-top: 0px;
   font: Bold 14px/17px Lato;
   letter-spacing: 0px;
   color: #0a0102;
@@ -120,7 +120,8 @@
   display: flex;
   justify-content: space-between;
   margin-top: "1px";
-  padding-top: 12px;
+  padding-top: 2px;
+  height: 26px;
 }
 #div-bagbutton {
   font: Medium 13px/15px Lato;
@@ -132,6 +133,7 @@
   border-radius: 2px;
   border: none;
   cursor: pointer;
+  font-size: 8px;
 }
 // .outerdiv-books:hover {
 // }
@@ -145,6 +147,10 @@
   color: #0a0102;
   cursor: pointer;
   outline: auto;
+  height: 26px;
+  margin-right: 2px;
+  width: 41%;
+  font-size: 8px;
 }
 .book-image {
   height: 3.3cm;
@@ -157,17 +163,18 @@
   width: 100%;
 }
 .book-img-div {
-  padding-top: 23px;
+  padding-top: 14px;
+  margin-left: 39px;
 }
 #paper-book {
-  width: 255px;
-  height: 316px;
+  width: 185px;
+  height: 245px;
   background-color: white;
   cursor: pointer;
-  margin-left: 20px;
+  margin-left: 4px;
   margin-right: 21px;
   margin-bottom: 20px;
-  margin-top: 21px;
+  margin-top: 6px;
   box-shadow: 1 4px 8px 0 rgba(0, 0, 0, 0), 1 6px 8px 0 rgba(0, 0, 0, 0);
 }
 #paper-book:hover {
@@ -176,8 +183,8 @@
 }
 
 #paper-book-below {
-  width: 255px;
-  height: 172px;
+  width: 185px;
+  height: 150px;
   background-color: #f5f5f5;
   box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0);
 }
@@ -185,9 +192,10 @@
   width: 79%;
   margin: 0 auto;
   height: 142vh;
+  z-index: 0;
 }
 #appbar-card {
-  background-color: #b30047;
+  background-color: #a03037;
   border-radius: 0px;
   height: 10vh;
   width: 100%;
@@ -298,7 +306,7 @@
 // }
 #footer-card {
   bottom: 0;
-  position: absolute;
+  position: fixed;
   color: rgba(255, 255, 255, 0.911);
   background-color: #2e1d1e;
   width: 100%;
@@ -456,7 +464,7 @@
     display: flex;
 
     font-size: 30px;
-    margin-top: 15px;
+    // margin-top: 15px;
   }
 
   .outerdiv-books {
@@ -468,6 +476,7 @@
     height: 720vh;
     margin-top: 12vh;
     cursor: pointer;
+    z-index: -1;
   }
   .count-div {
     display: flex;
@@ -495,8 +504,9 @@
     display: flex;
     justify-content: flex-end;
     text-transform: lowercase;
-    width: 50%;
+    width: 36%;
     margin-right: 9px;
+    height: 45px;
   }
   .visiblesort-div {
     display: flex;
@@ -520,7 +530,7 @@
   }
 
   .dropdown {
-    position: relative;
+    position: sticky;
     display: inline-block;
   }
 
