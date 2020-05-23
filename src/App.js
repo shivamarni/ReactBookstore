@@ -13,6 +13,7 @@ import Login from "./Components/Login.jsx";
 import ForgotPassword from "./Components/ForgotPassword.jsx";
 import ResetPassword from "./Components/ResetPassword.jsx";
 import VerifyEmail from "./Components/VerifyEmail.jsx";
+import Books from "./Components/Books.jsx";
 
 class App extends Component {
   constructor(props) {
@@ -34,7 +35,9 @@ class App extends Component {
             path="/user/resetpassword/:token"
             component={ResetPassword}
           ></Route>
+
           <Route path="/verify/:token" component={VerifyEmail}></Route>
+          <Route path="/books" component={Books}></Route>
         </Switch>
       </Router>
     );
