@@ -80,7 +80,7 @@ class Login extends Component {
           });
           console.log(response.data.data);
           localStorage.setItem("UserToken", response.data.data);
-          this.props.history.push("/bookstore/user");
+          this.props.history.push("/books");
         })
         .catch((error) => {
           this.setState({ loader: false });
