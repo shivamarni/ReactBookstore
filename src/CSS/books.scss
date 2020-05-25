@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-top: 80px;
+  margin-top: 8px;
   justify-content: center;
   margin-left: -8px;
 }
@@ -30,6 +30,7 @@
   border: none;
   outline: none;
   background-color: white;
+  margin-top: -6px;
 }
 .page-buttons:hover {
   box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.19),
@@ -37,12 +38,13 @@
 }
 
 .page-active-buttons {
-  padding: 15px 20px;
+  padding: 12px 20px;
   color: white;
   cursor: pointer;
   border: none;
   outline: none;
   background-color: #a03037;
+  height: 34px;
 }
 .page-active-buttons:hover {
   box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.19),
@@ -201,7 +203,7 @@
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: -100;
+  z-index: 9999;
 }
 
 .appbar-card-div {
@@ -305,6 +307,7 @@
 //   right: 0;
 // }
 #footer-card {
+  z-index: 9999;
   bottom: 0;
   position: fixed;
   color: rgba(255, 255, 255, 0.911);
@@ -362,22 +365,37 @@
 }
 
 .dropdown-content {
+  // display: none;
+  // position: relative;
+  // background-color: white;
+  // min-width: 134px;
+  // outline: auto;
+  // box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  // z-index: 1;
   display: none;
-  position: relative;
+  position: absolute;
   background-color: white;
-  min-width: 134px;
+  /* min-width: 134px; */
   outline: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  width: 100%;
 }
 
 .dropdown-content div {
+  // color: black;
+  // padding: 10px 14px;
+  // font-size: 14px;
+  // cursor: pointer;
+  // background-color: white;
+
+  // text-decoration: none;
+  // display: block;
   color: black;
   padding: 10px 14px;
   font-size: 14px;
   cursor: pointer;
   background-color: white;
-
   text-decoration: none;
   display: block;
 }
@@ -476,7 +494,7 @@
     height: 720vh;
     margin-top: 12vh;
     cursor: pointer;
-    z-index: -1;
+    // z-index: -1;
   }
   .count-div {
     display: flex;
