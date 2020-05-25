@@ -18,8 +18,7 @@ class GetBook extends Component {
         <Paper elevation={1} id="paper-book">
           <Paper elevation={1} id="paper-book-below">
             <div className="book-img-div">
-              <img src=/*{this.state.item.bookImage}*/"../Assets/book1.svg"
-               className="book-image" />
+              <img src={this.state.item.bookImage} className="book-image" />
             </div>
           </Paper>
           <div className="outer-details-div">
