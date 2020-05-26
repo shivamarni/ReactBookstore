@@ -155,13 +155,13 @@ class Books extends Component {
     return (
       <div className="page-container">
         <Header />
-        <Footer />
+        {/* <Footer /> */}
         <div className="outerdiv-books">
           <div className="content-div">
             <div className="count-sort-div">
               <div className="count-div">
                 Books
-                <div className="items-div">( Items)</div>
+                <div className="items-div">( {this.state.count}Items)</div>
               </div>
               <div className="sort-div">
                 <div class="dropdown">
@@ -178,6 +178,7 @@ class Books extends Component {
 
             <div className="content-wrapper">{displayBooks}</div>
             <div className="div-outer-page-buttons">{displayPages}</div>
+            <Footer />
           </div>
         </div>
       </div>
