@@ -44,7 +44,7 @@ class Header extends Component {
                 <div>
                   <img
                     style={{
-                      height: "0.75cm",
+                      height: "0.69cm",
                       width: "0.75cm",
                       opacity: "0.8",
                     }}
@@ -81,7 +81,7 @@ class Header extends Component {
                 </div>
                 <div className="profile-avatar">
                   <Avatar
-                    style={{ height: "35px" }}
+                    style={{ height: "39px" }}
                     src="/broken-image.jpg"
                     onClick={this.handleAvatarClick}
                   />
