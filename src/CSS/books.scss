@@ -52,7 +52,10 @@
 }
 .count-sort-div {
   display: flex;
-  width: 100%;
+  width: 96%;
+  margin-top: 10px;
+  margin-left: 51px;
+  height: 53px;
 }
 .count-div {
   display: flex;
@@ -62,8 +65,8 @@
   color: #0a0102;
   opacity: 1;
   font-family: inherit;
-  font-size: x-large;
-  margin-left: 18px;
+  font-size: 19px;
+  margin-left: 0%;
   width: 50%;
 }
 .items-div {
@@ -74,14 +77,14 @@
   font-family: inherit;
   font-size: 13px;
   padding-left: 3px;
-  padding-top: 9px;
+  padding-top: 6px;
 }
 .sort-div {
   display: flex;
   justify-content: flex-end;
   text-transform: lowercase;
   width: 50%;
-  margin-right: 35px;
+  margin-right: 106px;
 }
 .div-bookname {
   letter-spacing: 0px;
@@ -93,6 +96,7 @@
   justify-content: flex-start;
   margin-top: 0px;
   font: Regular 16px/19px Lato;
+  font-size: 13px;
 }
 .div-author {
   width: 86%;
@@ -135,7 +139,7 @@
   border-radius: 2px;
   border: none;
   cursor: pointer;
-  font-size: 8px;
+  font-size: 9px;
 }
 // .outerdiv-books:hover {
 // }
@@ -152,7 +156,7 @@
   height: 26px;
   margin-right: 2px;
   width: 41%;
-  font-size: 8px;
+  font-size: 9px;
 }
 .book-image {
   height: 3.3cm;
@@ -199,7 +203,7 @@
 #appbar-card {
   background-color: #a03037;
   border-radius: 0px;
-  height: 10vh;
+  height: 9vh;
   width: 100%;
   position: fixed;
   top: 0;
@@ -212,6 +216,7 @@
   justify-content: flex-start;
   width: "100%";
   margin-top: 4px;
+  // height: 7vh;
 }
 .appbar-name {
   color: rgba(255, 255, 255, 0.911);
@@ -226,14 +231,15 @@
 }
 #appbar-search-paper {
   width: 183%;
-  height: 81%;
+  height: 82%;
   padding-top: 0px;
-  margin-top: 3px;
+  margin-top: 4px;
   margin-bottom: 0px;
 }
 .appbar-paper-div {
   display: flex;
-  margin-bottom: -10%;
+  margin-bottom: 0%;
+  margin-top: -2px;
 }
 #search-icon-size {
   font-size: 23px;
@@ -252,18 +258,20 @@
   display: flex;
   justify-content: flex-end;
   width: 20%;
-  padding-top: 12px;
+  padding-top: 7px;
 }
 .search-div {
   display: flex;
   width: 30%;
   justify-content: center;
+  margin-bottom: -7px;
 }
 
 .cart-heading {
   color: rgba(255, 255, 255, 0.911);
   font-size: 15px;
-  padding-top: 17px;
+  padding-top: 12px;
+  // margin-bottom: -17px;
 }
 
 .img-logo {
@@ -276,7 +284,7 @@
   display: flex;
   width: 42%;
   justify-content: flex-end;
-  padding-left: 7px;
+  padding-left: -2px;
 }
 #simple-menu {
   top: 42px;
@@ -286,7 +294,7 @@
   display: flex;
   width: 20%;
   justify-content: flex-end;
-  margin-top: 4px;
+  margin-top: 1px;
   margin-right: -8%;
 
   cursor: pointer;
@@ -300,6 +308,7 @@
 .visiblesort-div {
   display: flex;
   flex-direction: row;
+  margin-top: -6px;
 }
 // #footer-card {
 //   bottom: 0;
@@ -309,11 +318,12 @@
 #footer-card {
   z-index: 9999;
   bottom: 0;
-  position: fixed;
+  // position: fixed;
   color: rgba(255, 255, 255, 0.911);
   background-color: #2e1d1e;
-  width: 100%;
+  width: 130%;
   height: 8vh;
+  margin-left: -14%;
 }
 
 .footer-text {
@@ -337,6 +347,7 @@
   height: auto;
   display: flex;
   flex-wrap: wrap;
+  margin-left: 40px;
 }
 
 .outer-div-profilemenu {
@@ -348,20 +359,27 @@
   color: #8f2b2f;
   opacity: 1;
 }
+@media only screen and (max-width: 600px) {
+  mat-sidenav-content {
+    width: auto;
+  }
+}
 .dropbtn {
   background-color: white;
   color: black;
-  padding: 14px;
-  font-size: 14px;
+  padding: 20px;
+  font-size: 10px;
   border: 4px;
   cursor: pointer;
   outline: auto;
   position: relative;
+  height: 30px;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
+  height: 67px;
 }
 
 .dropdown-content {
@@ -416,7 +434,7 @@
   #appbar-card {
     background-color: #8f2b2f;
     border-radius: 0px;
-    height: 8vh;
+    height: 9vh;
     width: 100%;
     position: fixed;
     top: 0;
@@ -429,26 +447,28 @@
   .logo-div {
     display: flex;
     justify-content: center;
-    padding-top: 9px;
-    padding-left: 16px;
+    padding-top: 8px;
+    margin-top: -1%;
+    // padding-left: 16px;
+    margin-left: 20px;
   }
   #appbar-search-paper {
     width: 136%;
     height: 73%;
-    padding-top: 0px;
-    margin-top: 7px;
-    margin-bottom: 0px;
-    margin-left: 20px;
+
+    margin-top: 1px;
+    padding-bottom: 4px;
+    margin-left: 30px;
   }
   #search-icon-size {
     font-size: 15px;
     padding-top: -7px;
-    margin-top: -2px;
+    margin-top: 0px;
   }
   #inputbase-search {
     font-weight: normal;
     color: #6e6d6d;
-    padding-top: 8px;
+    padding-top: 12px;
     font-size: 15px;
     margin-top: -3px;
   }
@@ -475,14 +495,16 @@
     display: flex;
     width: 30%;
     justify-content: end;
-    margin-top: 4px;
+    // margin-top: 3px;
+    padding-top: 3px;
+    margin-right: -4px;
   }
   .cart-icon-div {
     width: 30%;
     display: flex;
 
     font-size: 30px;
-    // margin-top: 15px;
+    margin-top: -10px;
   }
 
   .outerdiv-books {
@@ -505,7 +527,7 @@
     opacity: 1;
     font-family: inherit;
     font-size: large;
-    margin-left: 18px;
+    margin-left: 6%;
     width: 50%;
   }
   .items-div {
@@ -522,13 +544,16 @@
     display: flex;
     justify-content: flex-end;
     text-transform: lowercase;
-    width: 36%;
-    margin-right: 9px;
+    width: 30%;
+    margin-right: 40px;
     height: 45px;
   }
   .visiblesort-div {
     display: flex;
     flex-direction: row;
+    font-size: 11px;
+    margin-top: 3px;
+    height: 10px;
   }
   .arrow-symbol-div {
     padding-left: 15px;
@@ -540,8 +565,9 @@
   .dropbtn {
     background-color: white;
     color: black;
-    padding: 12px;
-    font-size: 13px;
+    // padding: 14px;
+    font-size: 12px;
+    height: 34px;
     border: 4px;
     cursor: pointer;
     outline: auto;
