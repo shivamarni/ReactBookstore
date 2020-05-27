@@ -33,6 +33,17 @@ class Header extends Component {
   handleClose = async () => {
     this.setState({ anchorEl: null });
   };
+  cartImageClick = () => {
+    let token = localStorage.getItem("UserToken");
+    if (token) {
+      console.log(this.props);
+      window.location = "http://localhost:3000/cart";
+      // this.props.history.push("/cart");
+    } else {
+      this.setState({ loginDialogOpen: true });
+    }
+  };
+
   render() {
     return (
       <div>
@@ -77,7 +88,10 @@ class Header extends Component {
               <div className="cart-outer-div">
                 <div className="cart-heading">Cart</div>
                 <div className="cart-icon-div">
-                  <ShoppingCartOutlinedIcon id="cart-icon" />
+                  <ShoppingCartOutlinedIcon
+                    id="cart-icon"
+                    onClick={this.cartImageClick}
+                  />
                 </div>
                 <div className="profile-avatar">
                   <Avatar
