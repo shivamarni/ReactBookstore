@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import BooksController from "../Controller/BooksController";
+import CartController from "../Controller/CartController";
 import GetBook from "./GetBook";
 
 class Books extends Component {
@@ -10,6 +11,7 @@ class Books extends Component {
 
     this.state = {
       bookArray: [],
+      cartArray: [],
       count: 0,
       pages: 0,
       pageArray: [],
@@ -27,7 +29,22 @@ class Books extends Component {
   componentDidMount() {
     this.getapprovedbooks();
     this.getcount();
+    this.getCartArray();
   }
+
+  getCartArray = async () => {
+    await CartController.getCartBooks()
+      .then((response) => {
+        console.log(response.data.data);
+        console.log(this.state.cartArray);
+        this.setState({
+          cartArray: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   getapprovedbooks = async () => {
     await BooksController.getallbooks(this.state.pageNumber - 1).then((res) => {
@@ -118,7 +135,13 @@ class Books extends Component {
 
   render() {
     let displayBooks = this.state.bookArray.map((item) => {
-      return <GetBook item={item} />;
+      return (
+        <GetBook
+          item={item}
+          getCartArray={this.getCartArray}
+          key={item.bookId}
+        />
+      );
     });
     let displayPages = this.state.pageArray.map((item) => {
       return (
