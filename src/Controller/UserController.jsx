@@ -3,7 +3,7 @@ import axios from "axios";
 
 //require('dotenv').config()
 
-const token = localStorage.getItem("logintoken");
+const token = localStorage.getItem("UserToken");
 var controller = {
   userRegistration(registrationDetails) {
     // console.log("controller register method ", registrationDetails);
@@ -62,6 +62,10 @@ var controller = {
   verification(token) {
     console.log("controller verification method ");
     console.log(token);
+    return axios.put(`http://localhost:8085/user/verify/${token}`, null);
+  },
+
+  getAddressByType(token) {
     return axios.put(`http://localhost:8085/user/verify/${token}`, null);
   },
   getprofilelink() {
