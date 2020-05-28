@@ -14,6 +14,7 @@ import ForgotPassword from "./Components/ForgotPassword.jsx";
 import ResetPassword from "./Components/ResetPassword.jsx";
 import VerifyEmail from "./Components/VerifyEmail.jsx";
 import Books from "./Components/Books.jsx";
+import OrderSuccessPage from "./Components/OrderSuccessPage.jsx";
 import Cart from "./Components/Cart.jsx";
 
 class App extends Component {
@@ -40,6 +41,10 @@ class App extends Component {
           <Route path="/verify/:token" component={VerifyEmail}></Route>
           <Route path="/books" component={Books}></Route>
           <Route path="/cart" component={Cart}></Route>
+          <Route
+            path="/bookstore/orderSuccessPage"
+            component={OrderSuccessPage}
+          ></Route>
         </Switch>
       </Router>
     );

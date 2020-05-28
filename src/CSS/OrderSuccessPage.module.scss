@@ -1,0 +1,99 @@
+@media (min-width: 800px) {
+  .OrderSummery {
+    margin: auto;
+    width: 50%;
+  }
+  .Footer {
+    p {
+      margin-left: 174px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .Footer {
+    justify-content: center;
+  }
+}
+
+.OrderSuccessPage {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  top: 90px;
+  flex-wrap: wrap;
+
+  .OrderPlaced {
+    height: 225px;
+    margin-bottom: 33px;
+    margin: auto;
+    .OrderPlacedImg {
+      height: 100%;
+      width: 170px;
+      margin-left: 286px;
+    }
+    .OrderText {
+      position: relative;
+      top: -100px;
+      color: #333232;
+      text-transform: capitalize;
+      font-size: 25px;
+      font-weight: bold;
+      margin-left: 234px;
+    }
+  }
+
+  .OrderSummery {
+    font-size: 18px;
+    color: #333232;
+    margin-bottom: 30px;
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    color: #333232;
+    font-size: 12px;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 13px;
+    width: 33.33%;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #dcdcdc;
+  }
+
+  .ContinueShopping {
+    margin-bottom: 26px;
+    margin-left: 257px;
+    margin-top: -26px;
+
+    .ContinueShoppingButton {
+      background-color: #3371b5;
+      padding-left: 26px;
+      padding-right: 26px;
+    }
+  }
+}
+.Footer {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  text-align: left;
+  height: 45px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #2e1d1e;
+  color: #ffffff;
+}

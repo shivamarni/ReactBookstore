@@ -18,7 +18,7 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import StyledRadio from "../elements/StyledRadio";
 import CssTextField from "../elements/CssTextField";
 import UserController from "../Controller/UserController";
-//import OrderService from "../Controller/OrderService";
+import OrderController from "../Controller/OrderController";
 //import Loader from "../UI/Loader";
 import FormControl from "../elements/CssFormControl";
 import Header from "./Header";
@@ -29,7 +29,7 @@ class CartDetails extends Component {
   state = {
     placeOrder: false,
     continue: false,
-    type: "Home",
+    type: "home",
     cartlist: [],
     address: {
       landmark: "",
@@ -51,7 +51,7 @@ class CartDetails extends Component {
 
   componentDidMount() {
     this.getCartBooks();
-    //this.getAddress();
+    this.getAddress();
     // this.getwishlistarray();
   }
 
@@ -80,10 +80,11 @@ class CartDetails extends Component {
   };
 
   getAddress = async () => {
+    console.log(this.state.type);
     await UserController.getAddressByType(this.state.type)
       .then((response) => {
         if (response.data.data !== null) {
-          let address = this.setAddress(response.data.object);
+          let address = this.setAddress(response.data.data);
           let blank = this.isBlank(address);
           this.setState({
             address: address,
@@ -119,23 +120,25 @@ class CartDetails extends Component {
   //     return address;
   //   };
 
-  //   setAddressField = () => {
-  //     let address = {
-  //       landmark: "",
-  //       city: "",
-  //       country: "",
-  //       address: "",
-  //       addressType: this.state.type,
-  //       pinCode: "",
-  //       name: "",
-  //       phonenumber: "",
-  //     };
-  //     return address;
-  //   };
+  setAddressField = () => {
+    let address = {
+      landmark: "",
+      city: "",
+      country: "",
+      address: "",
+      addressType: this.state.type,
+      pinCode: "",
+      name: "",
+      phonenumber: "",
+    };
+    return address;
+  };
 
   changeHandler = (event) => {
     let address = { ...this.state.address };
     address[event.target.name] = event.target.value;
+    address.addressType = this.state.type;
+    console.log(address);
     let blank = this.isBlank(address);
     this.setState({
       address: address,
@@ -181,22 +184,24 @@ class CartDetails extends Component {
     });
   };
 
-  //   addNewAddress = () => {
-  //     this.setState({ loader: true });
-  //     UserService.addNewAddress(this.state.address)
-  //       .then((response) => {
-  //         console.log(response.data);
-  //         this.setState({
-  //           open: true,
-  //           snackMessage: response.data.message,
-  //           loader: false,
-  //         });
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //         this.setState({ loader: false });
-  //       });
-  //   };
+  addNewAddress = () => {
+    this.setState({ loader: true });
+
+    UserController.addNewAddress(this.state.address)
+
+      .then((response) => {
+        console.log(response.data.data);
+        this.setState({
+          open: true,
+          snackMessage: response.data.message,
+          loader: false,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ loader: false });
+      });
+  };
 
   //   updateAddress = () => {
   //     this.setState({ loader: true });
@@ -235,34 +240,25 @@ class CartDetails extends Component {
     });
   };
 
-  //   orderPlaced = () => {
-  //     this.setState({ loader: true });
-  //     OrderService.checkout(
-  //       this.state.type,
-  //       this.deliveryCharge(),
-  //       this.totalCartPrice()
-  //     )
-  //       .then((response) => {
-  //         this.setState({
-  //           open: true,
-  //           snackMessage: response.data.message,
-  //           loader: false,
-  //         });
-  //         console.log(response.data.object.orderTackingId);
-  //         this.props.history.push(
-  //           "/bookstore/oderplaced",
-  //           response.data.object.orderTackingId
-  //         );
-  //       })
-  //       .catch((error) => {
-  //         this.setState({
-  //           open: true,
-  //           snackMessage: error.response.data.message,
-  //           loader: false,
-  //         });
-  //         console.log(error);
-  //       });
-  //   };
+  orderPlaced = () => {
+    this.setState({ loader: true });
+    OrderController.checkout(
+      this.state.type,
+      this.deliveryCharge(),
+      this.totalCartPrice()
+    ).then((response) => {
+      this.setState({
+        open: true,
+        // snackMessage: response.data.message,
+        loader: false,
+      });
+      console.log(response.data.data.orderId);
+      this.props.history.push(
+        "/bookstore/orderSuccessPage",
+        response.data.data.orderId
+      );
+    });
+  };
 
   handleRadioChange = async (event) => {
     await this.setState({
@@ -320,7 +316,7 @@ class CartDetails extends Component {
   totalCartPrice = () => {
     let total = 0;
     this.state.cartlist.forEach((cart) => {
-      total = total + cart.quantityOfBooks * cart.bookPrice;
+      total = total + cart.quantity.cartQuantity * cart.bookPrice;
     });
     return total;
   };
@@ -644,7 +640,7 @@ class CartDetails extends Component {
             </div>
           </Card>
           <Card className={classes.OrderSummery} variant="outlined">
-            <div className={classes.Summery}>Order summery</div>
+            <div className={classes.Summery}>Order summary</div>
             <div
               className={classes.OrderDetails}
               style={
@@ -670,18 +666,18 @@ class CartDetails extends Component {
                     </div>
                     <div className={classes.ItemTotal}>
                       <div className={classes.Qty}>
-                        <strong>Qty:</strong> {cart.quantityOfBooks}
+                        <strong>Qty:</strong> {cart.quantity.cartQuantity}
                       </div>
                       <div className={classes.Total}>
                         <strong>Price:</strong>{" "}
-                        {cart.quantityOfBooks * cart.bookPrice}
+                        {cart.quantity.cartQuantity * cart.bookPrice}
                       </div>
                     </div>
                   </div>
                 </div>
               ))}
               <div className={classes.DeliveryCharges}>
-                <strong>Delivery Fee:</strong> {this.deliveryCharge()}
+                <strong>Delivery Charge:</strong> {this.deliveryCharge()}
               </div>
               <Divider />
               <div className={classes.TotalCartValue}>

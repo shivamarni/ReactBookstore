@@ -62,11 +62,27 @@ var controller = {
   verification(token) {
     console.log("controller verification method ");
     console.log(token);
-    return axios.put(`http://localhost:8085/user/verify/${token}`, null);
+    return axios.put(`http://localhost:8085/address/useraddress/`, null);
   },
 
-  getAddressByType(token) {
-    return axios.put(`http://localhost:8085/user/verify/${token}`, null);
+  getAddressByType(type) {
+    return axios.put(`http://localhost:8085/user/verify/${token}`, null, {
+      headers: {
+        token: token,
+        type: type,
+        "Content-type": "application/json ",
+      },
+    });
+  },
+
+  addNewAddress(addressDto) {
+    return axios.post(`http://localhost:8085/address/add/`, addressDto, {
+      headers: {
+        token: token,
+
+        "Content-type": "application/json ",
+      },
+    });
   },
   getprofilelink() {
     return (

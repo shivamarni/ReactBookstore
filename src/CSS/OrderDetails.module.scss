@@ -1,0 +1,173 @@
+@media (min-width: 600px) {
+  .OrderDetailsCont {
+    left: 16%;
+    width: 80%;
+  }
+  .OrderDetailsCard {
+    width: 69%;
+    .OrderId {
+      margin-left: 36px;
+    }
+    .Summery {
+      margin-left: 36px;
+    }
+    .OrderedItem {
+      margin-left: 36px;
+    }
+    .OrderedBookDetails {
+      margin-left: 30px;
+    }
+    .OrderDataAndTime {
+      padding-right: 40px;
+    }
+    .TotalCartValue {
+      padding-right: 40px;
+    }
+  }
+  .Footer {
+    width: 100%;
+    margin-top: 43%;
+    p {
+      margin-left: 174px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .OrderDetailsCont {
+    left: 2%;
+    width: 95%;
+  }
+  .OrderDetailsCard {
+    width: 100%;
+    .OrderId {
+      margin-left: 10px;
+    }
+    .Summery {
+      margin-left: 10px;
+    }
+    .OrderedItem {
+      margin-left: 10px;
+    }
+    .OrderedBookDetails {
+      margin-left: 20px;
+    }
+    .OrderDataAndTime {
+      padding-right: 15px;
+    }
+    .TotalCartValue {
+      padding-right: 15px;
+    }
+  }
+  .Footer {
+    justify-content: center;
+    width: 100%;
+    margin-top: 90vh;
+  }
+}
+
+.OrderDetailsCont {
+  display: flex;
+  position: relative;
+  top: 100px;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  .OrderDetailsCard {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 35px;
+
+    .OrderId {
+      text-align: left;
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 18px;
+      color: #0a0102;
+      margin-bottom: 25px;
+    }
+
+    .OrderDetails {
+      flex-direction: column;
+      .OrderedItem {
+        display: flex;
+        align-items: center;
+        margin-top: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+        .OrderedBookImage {
+          display: flex;
+          align-self: flex-start;
+          width: 65px;
+          height: 85px;
+        }
+
+        .OrderedBookDetails {
+          display: flex;
+          flex-direction: column;
+
+          .OrderedBookName {
+            text-align: left;
+            font-size: 14px;
+            color: #0a0102;
+          }
+          .OrderedAuthorName {
+            text-align: left;
+            font-size: 12px;
+            color: #9d9d9d;
+            margin-top: 10px;
+          }
+          .OrderedBookPrice {
+            text-align: left;
+            font-size: 16px;
+            color: #0a0102;
+            margin-top: 10px;
+          }
+          .ItemTotal {
+            display: flex;
+            .Qty {
+              text-align: left;
+              font-size: 14px;
+              color: #0a0102;
+              margin-top: 10px;
+              padding-right: 10px;
+            }
+            .Total {
+              text-align: left;
+              font-size: 14px;
+              color: #0a0102;
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+
+      .OrderDataAndTime {
+        text-align: right;
+        font-size: 14px;
+        color: #0a0102;
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+
+      .TotalCartValue {
+        text-align: right;
+        font-size: 14px;
+        color: #0a0102;
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+.Footer {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  text-align: left;
+  height: 50px;
+  position: absolute;
+  background-color: #2e1d1e;
+  color: #ffffff;
+}
