@@ -33,12 +33,29 @@ var CartController = {
     );
   },
 
+  addToWishlist(bookId) {
+    return axios.post(
+      //   process.env.REACT_APP_BASE_URL + `/book/displaybooks/${page}`
+
+      "http://localhost:8085/wishlist/addbooktowishlist/",
+      null,
+      {
+        headers: {
+          token: token,
+          bookId: bookId,
+          "Content-type": "application/json ",
+        },
+      }
+    );
+  },
+
   getallwishlist() {
     console.log(token);
     return axios.get(
       //   process.env.REACT_APP_BASE_URL + `/book/displaybooks/${page}`
 
-      "http://localhost:8085/cart/allcartbooks",
+      "http://localhost:8085/wishlist/allwishlistbooks",
+
       {
         headers: {
           token: token,

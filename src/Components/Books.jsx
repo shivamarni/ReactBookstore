@@ -30,6 +30,7 @@ class Books extends Component {
     this.getapprovedbooks();
     this.getcount();
     this.getCartArray();
+    this.getwishlistarray();
   }
 
   getCartArray = async () => {
@@ -67,6 +68,16 @@ class Books extends Component {
       this.setState({
         pageArray: tempPageArr,
       });
+    });
+  };
+
+  getwishlistarray = async () => {
+    await CartController.getallwishlist().then((res) => {
+      if (res.status === 200) {
+        this.setState({
+          wishlistArray: res.data.data,
+        });
+      }
     });
   };
 
@@ -140,6 +151,8 @@ class Books extends Component {
           item={item}
           getCartArray={this.getCartArray}
           key={item.bookId}
+          getwishlistarray={this.getwishlistarray}
+          inWishlist={false}
         />
       );
     });

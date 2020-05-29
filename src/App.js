@@ -16,6 +16,7 @@ import VerifyEmail from "./Components/VerifyEmail.jsx";
 import Books from "./Components/Books.jsx";
 import OrderSuccessPage from "./Components/OrderSuccessPage.jsx";
 import Cart from "./Components/Cart.jsx";
+import Wishlist from "./Components/Wishlist.jsx";
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class App extends Component {
           <Route path="/verify/:token" component={VerifyEmail}></Route>
           <Route path="/books" component={Books}></Route>
           <Route path="/cart" component={Cart}></Route>
+          <Route path="/wishlist" component={Wishlist}></Route>
           <Route
             path="/bookstore/orderSuccessPage"
             component={OrderSuccessPage}

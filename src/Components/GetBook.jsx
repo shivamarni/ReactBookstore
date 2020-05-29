@@ -31,6 +31,19 @@ class GetBook extends Component {
     }
   };
 
+  handleWishlistClick = async () => {
+    let token = localStorage.getItem("UserToken");
+    if (token) {
+      CartController.addToWishlist(this.state.item.bookId).then((res) => {
+        if (res.status === 200) {
+          this.props.getwishlistarray();
+        }
+      });
+    } else {
+      this.setState({ loginDialogOpen: true });
+    }
+  };
+
   render() {
     return (
       <div>
@@ -51,7 +64,11 @@ class GetBook extends Component {
               <Button id="div-bagbutton" onClick={this.handleAddToBagClick}>
                 Add To Bag
               </Button>
-              <Button id="div-wishlistbutton" variant="outlined">
+              <Button
+                id="div-wishlistbutton"
+                variant="outlined"
+                onClick={this.handleWishlistClick}
+              >
                 Wishlist
               </Button>
             </div>

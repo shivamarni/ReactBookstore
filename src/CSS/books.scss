@@ -128,6 +128,7 @@
   margin-top: "1px";
   padding-top: 5px;
   height: 26px;
+  margin-left: 2%;
 }
 #div-bagbutton {
   font: Medium 13px/15px Lato;
@@ -167,6 +168,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-left: 5%;
 }
 .book-img-div {
   padding-top: 14px;
@@ -337,10 +339,21 @@
   flex-direction: column;
   height: 100%;
 }
+@media (max-width: 700px) {
+  .visiblesort-div {
+    display: flex;
+    flex-direction: row;
+    font-size: 5px;
+    margin-top: -12px;
+    height: 9px;
+  }
+}
 .visiblesort-div {
   display: flex;
   flex-direction: row;
-  margin-top: -6px;
+  // font-size: 5px;
+  margin-top: -12px;
+  height: 9px;
 }
 // #footer-card {
 //   bottom: 0;
@@ -369,7 +382,7 @@
   font-size: 23px;
   padding-left: 15px;
   padding-top: -10px;
-  margin-top: -14px;
+  margin-top: -17px;
   padding-bottom: -9px;
   font-weight: bold;
   height: -32%;
@@ -406,6 +419,19 @@
   outline: auto;
   position: relative;
   height: 30px;
+}
+@media (max-width: 700px) {
+  .dropbtn {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    font-size: 10px;
+    border: 4px;
+    cursor: pointer;
+    outline: auto;
+    position: relative;
+    height: 30px !important;
+  }
 }
 
 .dropdown {
@@ -577,21 +603,21 @@
     display: flex;
     justify-content: flex-end;
     text-transform: lowercase;
-    width: 30%;
-    margin-right: 40px;
+    width: 40%;
+    margin-right: 0px;
     height: 45px;
   }
   .visiblesort-div {
     display: flex;
     flex-direction: row;
     font-size: 11px;
-    margin-top: 3px;
+    margin-top: -3px;
     height: 10px;
   }
   .arrow-symbol-div {
     padding-left: 15px;
     padding-top: -10px;
-    margin-top: -8px;
+    margin-top: -14px;
     font-weight: bolder;
   }
   /***dropdown sort @mediaquery*****/
@@ -600,7 +626,7 @@
     color: black;
     // padding: 14px;
     font-size: 12px;
-    height: 48px;
+    height: 48px !important;
     border: 4px;
     cursor: pointer;
     outline: auto;
@@ -609,6 +635,8 @@
   .dropdown {
     position: sticky;
     display: inline-block;
+    padding: 9px;
+    margin-top: -17px;
   }
 
   .dropdown-content {
@@ -630,6 +658,74 @@
 
     text-decoration: none;
     display: block;
+  }
+  .div-authorwishlist-wishlist {
+    width: 86%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 6px;
+    font-size: 15px;
+    color: #9d9d9d;
+    opacity: 1;
+  }
+  .div-price-wishlist {
+    opacity: 1;
+    width: 86%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    font: Bold 14px/17px Lato;
+    letter-spacing: 0px;
+    color: #0a0102;
+    // font-size: 16px;
+    font-size: 87%;
+  }
+  .div-outerbuttons1 {
+    opacity: 1;
+    width: 343%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: "1px";
+    padding-top: 12px;
+    cursor: pointer;
+  }
+  .div-addtobag-wishlist {
+    padding-right: 20px;
+  }
+  .div-wishlistbuttons-wishlist {
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    margin-left: 3%;
+  }
+  .divider-wishlist {
+    padding-top: 15px;
+    width: 100%;
+    padding-bottom: 15px;
+  }
+  .div-wishlistbookname-wishlist {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: 13px;
+    font-size: 21px;
+  }
+  .div-bookname-wishlist {
+    letter-spacing: 0px;
+    color: #0a0102;
+    opacity: 1;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .wishlist-main-div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
   }
 
   .dropdown-content div:hover {

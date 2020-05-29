@@ -14,6 +14,14 @@ var controller = {
       }
     );
   },
+
+  getallapprovedbooks() {
+    return axios.get(
+      //   process.env.REACT_APP_BASE_URL + `/book/displaybooks/${page}`
+      "http://localhost:8085/book/getallbooks/"
+    );
+  },
+
   getcountofbooks() {
     return axios.get("http://localhost:8085/book/getbookcount");
   },

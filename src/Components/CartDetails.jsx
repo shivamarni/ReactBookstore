@@ -29,7 +29,7 @@ class CartDetails extends Component {
   state = {
     placeOrder: false,
     continue: false,
-    type: "home",
+    type: "Home",
     cartlist: [],
     address: {
       landmark: "",
@@ -52,18 +52,19 @@ class CartDetails extends Component {
   componentDidMount() {
     this.getCartBooks();
     this.getAddress();
-    // this.getwishlistarray();
+    this.getwishlistarray();
   }
 
-  //   getwishlistarray = async () => {
-  //     await CartController.getallwishlist().then((res) => {
-  //       if (res.status === 200) {
-  //         this.setState({
-  //           wishlistArray: res.data.object,
-  //         });
-  //       }
-  //     });
-  //   };
+  getwishlistarray = async () => {
+    await CartController.getallwishlist().then((res) => {
+      if (res.status === 200) {
+        this.setState({
+          wishlistArray: res.data.data,
+        });
+        console.log("hit get all wishlist successfully");
+      }
+    });
+  };
 
   getCartBooks = async () => {
     await CartController.getCartBooks()
@@ -84,8 +85,14 @@ class CartDetails extends Component {
     await UserController.getAddressByType(this.state.type)
       .then((response) => {
         if (response.data.data !== null) {
+          console.log("check here", response.data.data);
+
+          console.log("check here", response.data.data.country);
           let address = this.setAddress(response.data.data);
+
+          console.log("address", address);
           let blank = this.isBlank(address);
+
           this.setState({
             address: address,
             blank: blank,
@@ -106,19 +113,19 @@ class CartDetails extends Component {
       });
   };
 
-  //   setAddress = (responseAddress) => {
-  //     let address = {
-  //       landmark: responseAddress.landmark,
-  //       city: responseAddress.city,
-  //       country: "",
-  //       address: responseAddress.address,
-  //       addressType: responseAddress.addressType,
-  //       pinCode: responseAddress.pinCode,
-  //       name: responseAddress.name,
-  //       phonenumber: responseAddress.phonenumber,
-  //     };
-  //     return address;
-  //   };
+  setAddress = (responseAddress) => {
+    let address = {
+      landmark: responseAddress.landmark,
+      city: responseAddress.city,
+      country: "",
+      address: responseAddress.address,
+      addressType: responseAddress.addressType,
+      pinCode: responseAddress.pinCode,
+      name: responseAddress.name,
+      phonenumber: responseAddress.phonenumber,
+    };
+    return address;
+  };
 
   setAddressField = () => {
     let address = {
@@ -203,28 +210,28 @@ class CartDetails extends Component {
       });
   };
 
-  //   updateAddress = () => {
-  //     this.setState({ loader: true });
-  //     UserService.updateAddress(this.state.type, this.state.address)
-  //       .then((response) => {
-  //         console.log(response.data);
-  //         this.setState({
-  //           open: true,
-  //           snackMessage: response.data.message,
-  //           loader: false,
-  //         });
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //         this.setState({ loader: false });
+  // updateAddress = () => {
+  //   this.setState({ loader: true });
+  //   UserController.updateAddress(this.state.type, this.state.address)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       this.setState({
+  //         open: true,
+  //         snackMessage: response.data.message,
+  //         loader: false,
   //       });
-  //   };
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       this.setState({ loader: false });
+  //     });
+  // };
 
   continueHandler = () => {
     // console.log(this.state.isPresent)
     // console.log(this.state.address)
     if (this.state.isPresent) {
-      this.updateAddress();
+      this.addNewAddress();
     } else {
       this.addNewAddress();
     }

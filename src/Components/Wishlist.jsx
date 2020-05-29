@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Divider } from "@material-ui/core";
-import NavBar from "../Components/NavBar";
+import Header from "../Components/Header.jsx";
 import Controller from "../Controller/BooksController";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import WishlistBook from "../Components/WishlistBook";
+import BooksController from "../Controller/BooksController";
+import CartController from "../Controller/CartController";
 import "../CSS/books.scss";
 
 class Wishlist extends Component {
@@ -20,49 +22,51 @@ class Wishlist extends Component {
     };
   }
   componentDidMount() {
-    this.getcartarray();
+    this.getCartBooks();
     this.getwishlistarray();
-    this.getallapprovedbooks();
+    this.getapprovedbooks();
   }
 
-  getallapprovedbooks = async () => {
-    await Controller.getbooks().then((res) => {
-      if (res.status === 200) {
-        this.setState({ bookArray: res.data.object });
-      }
+  getapprovedbooks = async () => {
+    await BooksController.getallapprovedbooks().then((res) => {
+      this.setState({ bookArray: res.data.data });
     });
-    console.log("manu bookarray:", this.state.bookArray);
   };
 
   getwishlistarray = async () => {
-    await Controller.getallwishlists().then((res) => {
+    await CartController.getallwishlist().then((res) => {
       if (res.status === 200) {
+        console.log("inside approved books");
         this.setState({
-          wishlistArray: res.data.object,
-          wishlistCount: res.data.object.length,
+          wishlistArray: res.data.data,
         });
+        console.log("hit get all wishlist successfully");
       }
     });
-    console.log("manu Wishlistarray:", this.state.wishlistArray);
   };
 
-  getcartarray = async () => {
-    await Controller.getallcarts().then((res) => {
-      if (res.status === 200) {
+  getCartBooks = async () => {
+    await CartController.getCartBooks()
+      .then((response) => {
+        console.log(response.data.data);
+        console.log(this.state.cartlist);
         this.setState({
-          cartArray: res.data.object,
-          cartCount: res.data.object.length,
+          cartlist: response.data.data,
         });
-      }
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   render() {
     let displayBooks = this.state.bookArray.map((item) => {
+      console.log("inside wishlistbook", this.state.wishlistArray.length);
       if (this.state.wishlistArray.length !== 0) {
         for (let j = 0; j < this.state.wishlistArray.length; j++) {
           let bool = this.state.wishlistArray[j].bookId === item.bookId;
           if (bool) {
+            console.log("inside wishlistbook", item);
             return (
               <div>
                 <WishlistBook
@@ -84,7 +88,7 @@ class Wishlist extends Component {
     });
     return (
       <div className="page-container">
-        <NavBar
+        <Header
           cartCount={this.state.cartCount}
           wishlistCount={this.state.wishlistCount}
         />

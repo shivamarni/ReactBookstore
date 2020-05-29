@@ -66,7 +66,7 @@ var controller = {
   },
 
   getAddressByType(type) {
-    return axios.put(`http://localhost:8085/user/verify/${token}`, null, {
+    return axios.get(`http://localhost:8085/address/useraddress/`, {
       headers: {
         token: token,
         type: type,
@@ -84,6 +84,18 @@ var controller = {
       },
     });
   },
+
+  updateAddress(type, addressDto) {
+    return axios.post(`http://localhost:8085/address/add/`, addressDto, {
+      headers: {
+        token: token,
+        type: type,
+
+        "Content-type": "application/json ",
+      },
+    });
+  },
+
   getprofilelink() {
     return (
       axios.post("http://localhost:8085/user/files/link"),
