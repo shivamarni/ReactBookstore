@@ -23,7 +23,6 @@
   flex-direction: column;
   top: 90px;
   flex-wrap: wrap;
-  margin-left: -16px;
 
   .OrderPlaced {
     height: 225px;
@@ -32,7 +31,7 @@
     .OrderPlacedImg {
       height: 100%;
       width: 170px;
-      margin-left: 286px;
+      margin-left: 25%;
     }
     .OrderText {
       position: relative;
@@ -41,14 +40,14 @@
       text-transform: capitalize;
       font-size: 25px;
       font-weight: bold;
-      margin-left: 234px;
+      margin-left: 8%;
     }
   }
 
   .OrderSummery {
     font-size: 18px;
     color: #333232;
-    margin-bottom: 30px;
+    margin-bottom: 45px;
   }
 
   table {
@@ -75,8 +74,7 @@
 
   .ContinueShopping {
     margin-bottom: 26px;
-    margin-left: 257px;
-    margin-top: -26px;
+    margin-left: 20%;
 
     .ContinueShoppingButton {
       background-color: #3371b5;
@@ -90,7 +88,7 @@
   align-items: center;
   font-size: 12px;
   text-align: left;
-  height: 45px;
+  height: 50px;
   position: fixed;
   left: 0;
   bottom: 0;

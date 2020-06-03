@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classes from "../CSS/Login.module.scss";
+import classes from "../CSS/AdminLogin.module.scss";
 import {
   Card,
   InputAdornment,
@@ -17,16 +17,16 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import StyledRadio from "../elements/StyledRadio";
 // import Loader from "../UI/Loader";
-import UserController from "../Controller/UserController";
-// import AdminService from "../Controller/AdminService";
+//import UserController from "../Controller/UserController";
+import AdminController from "../Controller/AdminController";
 // import SellerService from "../Controller/SellerService";
 
-class Login extends Component {
+class AdminLogin extends Component {
   state = {
     fields: {},
     errors: {},
     valid: {
-      emailAddress: false,
+      email: false,
       password: false,
     },
     showPassword: false,
@@ -67,62 +67,25 @@ class Login extends Component {
 
   signInHandler = () => {
     var data = {
-      email: this.state.fields.emailAddress,
+      email: this.state.fields.email,
       password: this.state.fields.password,
     };
     this.setState({ loader: true });
-    if (this.state.type === "User") {
-      UserController.userLogin(data)
-        .then((response) => {
-          this.setState({
-            open: true,
-            snackMessage: "Successfully loged-in",
-          });
-          console.log(response.data.data);
-          localStorage.setItem("UserToken", response.data.data);
-          this.props.history.push("/books");
-        })
-        .catch((error) => {
-          this.setState({ loader: false });
-          console.log(error);
+
+    AdminController.adminLogin(data)
+      .then((response) => {
+        this.setState({
+          open: true,
+          snackMessage: "Successfully loged-in",
+          loader: false,
         });
-    } else if (this.state.type === "Admin") {
-      //   AdminService.adminLogin(data)
-      //     .then((response) => {
-      //       this.setState({
-      //         open: true,
-      //         snackMessage: "Successfully loged-in",
-      //         loader: false,
-      //       });
-      //       console.log(response.data.object);
-      //       localStorage.setItem(
-      //         "UserToken",
-      //         JSON.stringify(response.data.object)
-      //       );
-      //     })
-      //     .catch((error) => {
-      //       this.setState({ loader: false });
-      //       console.log(error);
-      //     });
-    } else if (this.state.type === "Seller") {
-      //   SellerService.sellerLogin(data)
-      //     .then((response) => {
-      //       this.setState({
-      //         open: true,
-      //         snackMessage: "Successfully loged-in",
-      //         loader: false,
-      //       });
-      //       console.log(response.data.object);
-      //       localStorage.setItem(
-      //         "UserToken",
-      //         JSON.stringify(response.data.object)
-      //       );
-      //     })
-      // .catch((error) => {
-      //   this.setState({ loader: false });
-      //   console.log(error);
-      // });
-    }
+        console.log(response.data.object);
+        localStorage.setItem("UserToken", JSON.stringify(response.data.object));
+      })
+      .catch((error) => {
+        this.setState({ loader: false });
+        console.log(error);
+      });
   };
 
   isValidForm = (fields) => {
@@ -130,21 +93,21 @@ class Login extends Component {
     let errors = { ...this.state.errors };
     let formIsValid = true;
 
-    if (!fields["emailAddress"]) {
+    if (!fields["email"]) {
       formIsValid = false;
-      errors["emailAddress"] = "*Please enter your email-ID.";
+      errors["email"] = "*Please enter your email-ID.";
     }
 
-    if (typeof fields["emailAddress"] !== "undefined") {
+    if (typeof fields["email"] !== "undefined") {
       var pattern = new RegExp(
         /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
       );
-      if (!pattern.test(fields["emailAddress"])) {
-        valid["emailAddress"] = true;
+      if (!pattern.test(fields["email"])) {
+        valid["email"] = true;
         formIsValid = false;
-        errors["emailAddress"] = "*Please enter valid email-ID.";
+        errors["email"] = "*Please enter valid email-ID.";
       } else {
-        valid["emailAddress"] = false;
+        valid["email"] = false;
       }
     }
 
@@ -192,10 +155,10 @@ class Login extends Component {
             <TextField
               autoComplete="of"
               style={{ marginBottom: "7px" }}
-              name="emailAddress"
-              id="emailAddress"
-              value={fields.emailAddress}
-              error={valid.emailAddress}
+              name="email"
+              id="email"
+              value={fields.email}
+              error={valid.email}
               // helperText={valid.emailAddress ? errors.emailAddress : "Email"}
               onChange={this.changeHandler}
               label="Email Address"
@@ -279,7 +242,7 @@ class Login extends Component {
               onChange={this.handleRadioChange}
             >
               <FormControlLabel
-                value="User"
+                value="Admin"
                 control={<StyledRadio />}
                 label={
                   <div
@@ -289,11 +252,11 @@ class Login extends Component {
                       color: "#333232",
                     }}
                   >
-                    User
+                    Admin
                   </div>
                 }
               />
-              <FormControlLabel
+              {/* <FormControlLabel
                 disabled
                 value="Seller"
                 control={<StyledRadio />}
@@ -308,7 +271,7 @@ class Login extends Component {
                     Seller
                   </div>
                 }
-              />
+              /> */}
               {/* <FormControlLabel
                 disabled
                 value="Admin"
@@ -347,4 +310,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default AdminLogin;

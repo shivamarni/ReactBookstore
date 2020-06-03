@@ -29,7 +29,8 @@ class CartDetails extends Component {
   state = {
     placeOrder: false,
     continue: false,
-    type: "Home",
+    snackMessage: "",
+    type: "home",
     cartlist: [],
     address: {
       landmark: "",
@@ -294,6 +295,11 @@ class CartDetails extends Component {
     await CartController.removeCartItem(bookId)
       .then((response) => {
         console.log(response.data);
+        this.setState({
+          open: true,
+          snackMessage: "book removed from cart",
+          removeBook: true,
+        });
         // this.setState({
         //     open: true,
         //     snackMessage: response.data.message,
@@ -310,6 +316,7 @@ class CartDetails extends Component {
     await CartController.decreaseQuantity(bookId)
       .then((response) => {
         console.log(response.data);
+
         // this.setState({
         //   cartlist: response.data.object,
         // });
@@ -351,6 +358,17 @@ class CartDetails extends Component {
           cartCount={cartlist.length}
           wishlistCount={wishlistArray.length}
         />
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          autoHideDuration={1500}
+          key={new Date().getTime()}
+          open={this.state.open}
+          onClose={this.handleClose}
+          message={this.state.snackMessage}
+        />
         <div className={classes.CartDetails}>
           <Card className={classes.CartItem} variant="outlined">
             <div className={classes.No_of_cart_items}>
@@ -380,7 +398,7 @@ class CartDetails extends Component {
                     <IconButton
                       className={classes.Minus}
                       disabled={
-                        cart.quantityOfBooks <= 1 || this.state.placeOrder
+                        cart.quantity.cartQuantity <= 1 || this.state.placeOrder
                       }
                       onClick={() => this.removeBookHandler(cart.bookId)}
                       size="small"
@@ -394,7 +412,7 @@ class CartDetails extends Component {
                       className={classes.Pluse}
                       disabled={
                         this.state.placeOrder ||
-                        cart.quantityOfBooks >= cart.noOfBooks
+                        cart.quantity.cartQuantity >= cart.noOfBooks
                       }
                       size="small"
                       onClick={() => this.addBookHandler(cart.bookId)}

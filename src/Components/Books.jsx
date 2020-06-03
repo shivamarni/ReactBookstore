@@ -16,6 +16,7 @@ class Books extends Component {
       pages: 0,
       pageArray: [],
       pageNumber: 1,
+      numberOfCartBooks: "",
       sortArray: [
         "Price: Low to High",
         "Price: High to Low",
@@ -31,7 +32,21 @@ class Books extends Component {
     this.getcount();
     this.getCartArray();
     this.getwishlistarray();
+    this.cartCount();
   }
+
+  cartCount = async () => {
+    await CartController.getCartBooksCount()
+      .then((response) => {
+        this.setState({
+          numberOfCartBooks: response.data.data,
+        });
+        console.log("numberOfCartBooks", this.state.numberOfCartBooks);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   getCartArray = async () => {
     await CartController.getCartBooks()
@@ -150,6 +165,7 @@ class Books extends Component {
         <GetBook
           item={item}
           getCartArray={this.getCartArray}
+          cartCount={this.cartCount}
           key={item.bookId}
           getwishlistarray={this.getwishlistarray}
           inWishlist={false}
@@ -190,7 +206,7 @@ class Books extends Component {
     });
     return (
       <div className="page-container">
-        <Header />
+        <Header numberOfCartBooks={this.state.numberOfCartBooks} />
         {/* <Footer /> */}
         <div className="outerdiv-books">
           <div className="content-div">

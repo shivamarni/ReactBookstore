@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Divider } from "@material-ui/core";
+import { Divider, Card } from "@material-ui/core";
 import Header from "../Components/Header.jsx";
 import Controller from "../Controller/BooksController";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -102,14 +102,15 @@ class Wishlist extends Component {
                 <div className="mywishlist-div">My Wishlist ()</div>
               </div>
             </div>
-            <div className="content-wrapper">{displayBooks}</div>
+            <div className="content-wrapper1">{displayBooks}</div>
           </div>
-
-          <footer className="footer">
-            <div className="footer-text">
-              Copyright © 2020,Bookstore Private Limited.All Rights Reserved
-            </div>
-          </footer>
+          <Card id="footer-card">
+            <footer className="footer">
+              <div className="footer-text">
+                Copyright © 2020,Bookstore Private Limited.All Rights Reserved
+              </div>
+            </footer>
+          </Card>
         </div>
       </div>
     );

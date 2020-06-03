@@ -219,6 +219,7 @@ class Registration extends Component {
           <div className={classes.Signup}>Registration</div>
           <div className={classes.Form}>
             <TextField
+              autoComplete="of"
               style={{ marginBottom: "7px" }}
               name="name"
               id="name"
@@ -238,6 +239,7 @@ class Registration extends Component {
               }}
             />
             <TextField
+              autoComplete="of"
               style={{ marginBottom: "7px" }}
               name="email"
               id="email"
@@ -257,6 +259,7 @@ class Registration extends Component {
               }}
             />
             <TextField
+              autoComplete="of"
               style={{ marginBottom: "7px" }}
               name="mobile"
               id="mobile"

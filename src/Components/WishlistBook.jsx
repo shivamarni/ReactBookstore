@@ -8,7 +8,7 @@ import {
   Divider,
 } from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import Controller from "../Controller/BooksController";
+import CartController from "../Controller/CartController";
 import { withRouter } from "react-router-dom";
 import "../CSS/books.scss";
 
@@ -20,6 +20,7 @@ class WishlistBook extends Component {
       paperElevation: 1,
       item: this.props.item,
       descOpen: false,
+      snackMessage: "",
       loginDialogOpen: false,
       cartArray: this.props.cartArray,
       inCart: this.props.inCart,
@@ -43,12 +44,19 @@ class WishlistBook extends Component {
   handleAddToBagClick = async () => {
     let token = localStorage.getItem("UserToken");
     if (token) {
-      await Controller.addToBag(this.state.item.bookId).then((res) => {
-        if (res.status === 200) {
-          this.props.getwishlistarray();
-          this.props.getcartarray();
+      await CartController.wishlistToCart(this.state.item.bookId).then(
+        (res) => {
+          if (res.status === 200) {
+            this.props.getwishlistarray();
+            this.setState({
+              open: true,
+              snackMessage: "book added to cart",
+              handleAddToBagClick: true,
+            });
+            // this.props.cartarray();
+          }
         }
-      });
+      );
     } else {
       this.setState({ loginDialogOpen: true });
     }
@@ -69,10 +77,15 @@ class WishlistBook extends Component {
   removeFromWishlist = async () => {
     let token = localStorage.getItem("UserToken");
     if (token) {
-      await Controller.removeFromWishlist(this.state.item.bookId).then(
+      await CartController.removeFromWishlist(this.state.item.bookId).then(
         (res) => {
           if (res.status === 200) {
             this.props.getwishlistarray();
+            this.setState({
+              open: true,
+              snackMessage: "book removed from wishlist",
+              removeFromWishlist: true,
+            });
           }
         }
       );
@@ -83,7 +96,9 @@ class WishlistBook extends Component {
 
   render() {
     return (
-      <div className="wishlist-main-div">
+      // <div className="wishlist-main-div">
+
+      <div id="paper-book">
         <Paper elevation={1} id="paper-book-below">
           <div className="book-img-div">
             <img src={this.state.item.bookImage} className="book-image" />
@@ -108,7 +123,13 @@ class WishlistBook extends Component {
             </div>
           )}
         </Paper>
-        <div>
+        <div className="div-bookname">{this.state.item.bookName}</div>
+        <div className="div-author">by {this.state.item.bookAuthor}</div>
+        <div className="div-price">Rs. {this.state.item.bookPrice}</div>
+        <div className="div-quantity">
+          books left {this.state.item.noOfBooks}
+        </div>
+        {/* <div>
           <div className="outer-details-div">
             <div className="div-bookname-wishlist">
               <div className="div-wishlistbookname-wishlist">
@@ -123,8 +144,8 @@ class WishlistBook extends Component {
               Rs. {this.state.item.bookPrice}
             </div>
           </div>
-        </div>
-        <div className="div-wishlistbuttons-wishlist">
+        </div> */}
+        {/* <div className="div-buutons">
           <div className="div-outerbuttons1">
             <div className="div-addtobag-wishlist">
               <Button id="div-bagbutton" onClick={this.handleAddToBagClick}>
@@ -139,6 +160,29 @@ class WishlistBook extends Component {
               Remove
             </Button>
           </div>
+        </div> */}
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          autoHideDuration={1500}
+          key={new Date().getTime()}
+          open={this.state.open}
+          onClose={this.handleClose}
+          message={this.state.snackMessage}
+        />
+        <div className="div-buttons1">
+          <Button id="div-bagbutton" onClick={this.handleAddToBagClick}>
+            Add To Bag
+          </Button>
+          <Button
+            id="div-wishlistbutton"
+            variant="outlined"
+            onClick={this.removeFromWishlist}
+          >
+            Remove
+          </Button>
         </div>
       </div>
     );

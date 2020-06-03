@@ -130,6 +130,7 @@ class ForgotPassword extends Component {
           <div className={classes.Form}>
             <TextField
               style={{ marginBottom: "7px" }}
+              autoComplete="of"
               name="emailAddress"
               id="emailAddress"
               value={emailAddress}

@@ -7,7 +7,9 @@ import {
   Avatar,
   Menu,
   MenuItem,
+  Badge,
 } from "@material-ui/core";
+//antha file open pannunga
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
@@ -16,16 +18,37 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import BookImage from "../Assets/book.svg";
 import "../CSS/books.scss";
 import Footer from "./Footer.jsx";
+import CartController from "../Controller/CartController";
 class Header extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       anchorEl: null,
+      numberOfCartBooks: "",
+    };
+    this.handleAvatarClick = this.handleAvatarClick.bind(this);
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState = {
+      numberOfCartBooks: props.numberOfCartBooks,
     };
   }
+
+  // getCartBooksCount = async () => {
+  //   await CartController.getCartBooksCount()
+  //     .then((response) => {
+  //       this.setState({
+  //         numberOfCartBooks: response.data.data,
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
   handleAvatarClick = async (event) => {
-    this.setState({
+    await this.setState({
       anchorEl: event.currentTarget,
     });
   };
@@ -38,13 +61,14 @@ class Header extends Component {
     if (token) {
       console.log(this.props);
       window.location = "http://localhost:3000/cart";
-      // this.props.history.push("/cart");
+      //this.props.history.push("/cart");
     } else {
       this.setState({ loginDialogOpen: true });
     }
   };
 
   render() {
+    const { anchorEl } = this.state;
     return (
       <div>
         {/* <Footer /> */}
@@ -88,10 +112,26 @@ class Header extends Component {
               <div className="cart-outer-div">
                 <div className="cart-heading">Cart</div>
                 <div className="cart-icon-div">
-                  <ShoppingCartOutlinedIcon
-                    id="cart-icon"
-                    onClick={this.cartImageClick}
-                  />
+                  <Badge
+                    //  badgeContent={<div>{this.state.cartCount}</div>}
+                    badgeContent={
+                      <div className="cart-num">
+                        {/* {" "} */}
+                        {this.props.numberOfCartBooks}
+                      </div>
+                    }
+                    // color="secondary"
+                    // overlap="circle"
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                  >
+                    <ShoppingCartOutlinedIcon
+                      id="cart-icon"
+                      onClick={this.cartImageClick}
+                    />
+                  </Badge>
                 </div>
                 <div className="profile-avatar">
                   <Avatar
@@ -103,7 +143,7 @@ class Header extends Component {
                   <div className="menu-div">
                     <Menu
                       id="simple-menu"
-                      anchorEl={this.state.anchorEl}
+                      anchorEl={() => this.state.anchorEl}
                       anchorOrigin={{
                         vertical: "bottom",
                         horizontal: "center",

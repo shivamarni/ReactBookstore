@@ -11,13 +11,20 @@ class OrderSuccessPage extends Component {
     cartlist: [],
     orderDetails: [],
     wishlistArray: [],
+    orderId: 1111,
   };
 
   componentDidMount() {
     this.getCartBooks();
     //this.getwishlistarray();
+    this.incrementOrderId();
   }
 
+  incrementOrderId = () => {
+    this.setState({
+      orderId: this.state.orderId + 1,
+    });
+  };
   //   getwishlistarray = async () => {
   //     await Controller.getallwishlists().then((res) => {
   //       if (res.status === 200) {
@@ -63,7 +70,7 @@ class OrderSuccessPage extends Component {
             <div className={classes.OrderText}>order placed successfully</div>
             <div className={classes.OrderSummery}>
               hurray!!! your order is confirmed the order id is #
-              {/* {this.props.location.state}  */}
+              {/* {this.props.location.state} */ this.state.orderId + 1}
               save the order id for further communication..
             </div>
             <table>
