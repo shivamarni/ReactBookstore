@@ -9,7 +9,6 @@ import {
   MenuItem,
   Badge,
 } from "@material-ui/core";
-//antha file open pannunga
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";

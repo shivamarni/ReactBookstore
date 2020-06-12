@@ -207,6 +207,7 @@ class Books extends Component {
     return (
       <div className="page-container">
         <Header numberOfCartBooks={this.state.numberOfCartBooks} />
+
         {/* <Footer /> */}
         <div className="outerdiv-books">
           <div className="content-div">

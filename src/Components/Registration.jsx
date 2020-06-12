@@ -20,7 +20,7 @@ import StyledRadio from "../elements/StyledRadio";
 //import Loader from "../UI/Loader";
 import UserController from "../Controller/UserController";
 //import SellerService from "../Controller/SellerController";
-//import AdminService from "../Controller/AdminController";
+import AdminService from "../Controller/AdminController";
 
 class Registration extends Component {
   state = {
@@ -76,7 +76,7 @@ class Registration extends Component {
           //   this.setState({ loader: false });
           console.log(error);
         });
-    } else if (this.state.type === "Seller") {
+      // } else if (this.state.type === "Seller") {
       //   SellerService.sellerRegistration(data)
       //     .then((response) => {
       //       this.setState({
@@ -92,24 +92,24 @@ class Registration extends Component {
       //         // loader: false,
       //       });
       //       console.log(error);
-      //  });
-      // } else if (this.state.type === "Admin") {
-      //   AdminService.adminRegistration(data)
-      //     .then((response) => {
-      //       this.setState({
-      //         open: true,
-      //         snackMessage: "Successfully loged-in",
-      //         // loader: false,
-      //       });
-      // })
-      // .catch((error) => {
-      //   this.setState({
-      //     open: true,
-      //     snackMessage: "Something went wrong",
-      //     // loader: false,
-      //   });
-      //   console.log(error);
-      // });
+      //     });
+    } else if (this.state.type === "Admin") {
+      AdminService.adminRegistration(data)
+        .then((response) => {
+          this.setState({
+            open: true,
+            snackMessage: "Successfully loged-in",
+            // loader: false,
+          });
+        })
+        .catch((error) => {
+          this.setState({
+            open: true,
+            snackMessage: "Something went wrong",
+            // loader: false,
+          });
+          console.log(error);
+        });
     }
   };
 
@@ -369,7 +369,7 @@ class Registration extends Component {
                   </div>
                 }
               />
-              {/* <FormControlLabel
+              <FormControlLabel
                 disabled
                 value="Admin"
                 control={<StyledRadio />}
@@ -384,7 +384,7 @@ class Registration extends Component {
                     Admin
                   </div>
                 }
-              /> */}
+              />
             </RadioGroup>
           </div>
         </Card>

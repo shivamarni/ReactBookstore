@@ -14,7 +14,7 @@ class GetBook extends Component {
       open: false,
       addedToCart: false,
     };
-    this.handleAddToBagClick = this.handleAddToBagClick.bind(this);
+    //this.handleAddToBagClick = this.handleAddToBagClick.bind(this);
     //this.handleClose = this.handleClose.bind(this);
   }
 
@@ -49,10 +49,9 @@ class GetBook extends Component {
         }
         console.log("addedticart", this.state.addedToCart);
       });
+    } else {
+      this.setState({ loginDialogOpen: true });
     }
-    //  else {
-    //   this.setState({ loginDialogOpen: true });
-    // }
   };
 
   handleWishlistClick = async () => {
@@ -78,7 +77,7 @@ class GetBook extends Component {
 
     return (
       <div>
-        {/* <Snackbar
+        <Snackbar
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "center",
@@ -88,7 +87,7 @@ class GetBook extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           message={this.state.snackMessage}
-        /> */}
+        />
         <Paper elevation={1} id="paper-book">
           <Paper elevation={1} id="paper-book-below">
             <div className="book-img-div">
@@ -104,11 +103,17 @@ class GetBook extends Component {
             </div>
             <div className="div-buttons">
               {this.state.addedToCart ? (
-                <Button id="div-bagbutton" onClick={this.handleAddToBagClick}>
+                <Button
+                  id="div-bagbutton1"
+                  onClick={() => this.handleAddToBagClick()}
+                >
                   Added To Bag
                 </Button>
               ) : (
-                <Button id="div-bagbutton" onClick={this.handleAddToBagClick}>
+                <Button
+                  id="div-bagbutton"
+                  onClick={() => this.handleAddToBagClick()}
+                >
                   Add To Bag
                 </Button>
               )}
