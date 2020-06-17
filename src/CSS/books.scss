@@ -98,6 +98,19 @@
   font: Regular 16px/19px Lato;
   font-size: 13px;
 }
+.div-bookname1 {
+  letter-spacing: 0px;
+  color: #0a0102;
+  opacity: 1;
+  width: 86%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0px;
+  margin-left: -6%;
+  font: Regular 16px/19px Lato;
+  font-size: 13px;
+}
 .div-author {
   width: 86%;
   margin: 0 auto;
@@ -108,6 +121,17 @@
   color: #9d9d9d;
   opacity: 1;
 }
+.div-author1 {
+  width: 86%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0px;
+  font: 12px lato;
+  color: #9d9d9d;
+  margin-left: -6%;
+  opacity: 1;
+}
 .div-price {
   opacity: 1;
   width: 86%;
@@ -115,6 +139,18 @@
   display: flex;
   justify-content: flex-start;
   margin-top: 0px;
+  font: Bold 14px/17px Lato;
+  letter-spacing: 0px;
+  color: #0a0102;
+}
+.div-price1 {
+  opacity: 1;
+  width: 86%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0px;
+  margin-left: -6%;
   font: Bold 14px/17px Lato;
   letter-spacing: 0px;
   color: #0a0102;
@@ -141,6 +177,30 @@
   height: 26px;
   margin-left: 6%;
 }
+.div-buttons5 {
+  opacity: 1;
+
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -2%;
+  padding-top: 7%;
+  height: 26px;
+
+  width: 14%;
+  margin-left: 62%;
+}
+.div-buttons2 {
+  opacity: 1;
+  width: 86%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  // margin-top: "5%";
+  padding-top: 15px;
+  height: 26px;
+  margin-left: 2%;
+}
 #div-bagbutton {
   font: Medium 13px/15px Lato;
   letter-spacing: 0px;
@@ -152,6 +212,10 @@
   border: none;
   cursor: pointer;
   font-size: 9px;
+}
+.admin-description1 {
+  margin-left: -19%;
+  margin-top: 6%;
 }
 #div-bagbutton1 {
   font: Medium 13px/15px Lato;
@@ -165,6 +229,35 @@
   cursor: pointer;
   font-size: 9px;
 }
+#div-bagbutton2 {
+  font: Medium 13px/15px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+  opacity: 1;
+  background: #a03037 0% 0% no-repeat padding-box;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  width: 86%;
+  margin-left: 13%;
+}
+#div-bagbutton5 {
+  font: Medium 13px/15px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+  opacity: 1;
+  background: orangered;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  width: 61%;
+  margin-left: -16%;
+}
+
 // .outerdiv-books:hover {
 // }
 #div-wishlistbutton {
@@ -182,6 +275,23 @@
   width: 41%;
   font-size: 9px;
 }
+#div-approve {
+  font: medium 11px/13px Lato;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  opacity: 1;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  outline: auto;
+  height: 29px;
+  margin-right: -12%;
+  width: 61%;
+  font-size: 11px;
+  background-color: lime;
+  margin-top: -1px;
+}
 .book-image {
   height: 3.3cm;
   width: 2.8cm;
@@ -191,7 +301,14 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-left: 5%;
+  margin-left: 25%;
+}
+.outer-details-div1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 21%;
+  margin-top: -12%;
 }
 .book-img-div {
   padding-top: 14px;
@@ -199,6 +316,17 @@
 }
 #paper-book {
   width: 185px;
+  height: 260px;
+  background-color: white;
+  cursor: pointer;
+  margin-left: 4px;
+  margin-right: 21px;
+  margin-bottom: 20px;
+  margin-top: 6px;
+  box-shadow: 1 4px 8px 0 rgba(0, 0, 0, 0), 1 6px 8px 0 rgba(0, 0, 0, 0);
+}
+#paper-book1 {
+  width: 100%;
   height: 260px;
   background-color: white;
   cursor: pointer;
@@ -217,6 +345,12 @@
   width: 185px;
   height: 150px;
   background-color: #f5f5f5;
+  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0);
+}
+#paper-book-below1 {
+  width: 185px;
+  height: 150px;
+
   box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0);
 }
 .content-div {
@@ -299,6 +433,10 @@
   font-size: 11px;
   margin-left: 13px;
 }
+.div-seller {
+  font-size: 11px;
+  margin-left: -6%;
+}
 .appbar-paper-div {
   display: flex;
   margin-bottom: 0%;
@@ -328,7 +466,7 @@
   width: 30%;
   justify-content: center;
   margin-bottom: 0px;
-  margin-top: -2px;
+  margin-top: 0px;
 }
 
 .cart-heading {
@@ -354,6 +492,49 @@
   top: 42px;
   left: -61px;
 }
+#card_decordialog {
+  // padding: 140px;
+  // padding-bottom: 75%;
+  display: flex;
+  margin: auto;
+  // width: 40%;
+  width: 350px;
+  padding-bottom: 10%;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.2);
+}
+.box_bookname {
+  margin-left: 14%;
+}
+.box_bookauthor {
+  margin-left: 14%;
+  margin-top: 5%;
+}
+.box_bookprice {
+  margin-left: 14%;
+  margin-top: 5%;
+  width: 35%;
+}
+.box_noOfBooks {
+  margin-left: 51%;
+  margin-top: -13%;
+  width: 35%;
+}
+.box_description {
+  margin-left: 14%;
+  margin-top: 5%;
+}
+.dialog_title {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
 .profile-avatar {
   display: flex;
   width: 20%;
@@ -385,11 +566,44 @@
   margin-top: -3px;
   height: 9px;
 }
+@media (max-width: 700px) {
+  .visiblesort-div1 {
+    display: flex;
+    flex-direction: row;
+    font-size: 5px;
+    margin-top: -12px !important;
+    height: 9px;
+  }
+}
+.visiblesort-div1 {
+  display: flex;
+  flex-direction: row;
+  // font-size: 5px;
+  margin-top: -4px;
+  height: 9px;
+}
 // #footer-card {
 //   bottom: 0;
 //   left: 0;
 //   right: 0;
 // }
+@media (max-width: 700px) {
+  .visiblesort-div1 {
+    display: flex;
+    flex-direction: row;
+    font-size: 5px;
+    margin-top: -12px;
+    height: 9px;
+  }
+}
+.visiblesort-div1 {
+  display: flex;
+  flex-direction: row;
+  // font-size: 5px;
+  margin-top: -4px;
+  height: 9px;
+}
+
 #footer-card {
   z-index: 9999;
   bottom: 0;
@@ -421,6 +635,13 @@
 .content-wrapper {
   height: auto;
   display: flex;
+  flex-wrap: wrap;
+  margin-left: 40px;
+}
+.content-wrapper1 {
+  height: auto;
+  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   margin-left: 40px;
 }
@@ -474,8 +695,8 @@
   }
 }
 .dropbtn {
-  background-color: white;
-  color: black;
+  background-color: #a03037;
+  color: white;
   padding: 20px;
   font-size: 10px;
   border: 4px;
@@ -486,8 +707,8 @@
 }
 @media (max-width: 700px) {
   .dropbtn {
-    background-color: white;
-    color: black;
+    background-color: #a03037 !important;
+    color: white !important;
     padding: 20px;
     font-size: 10px;
     border: 4px;

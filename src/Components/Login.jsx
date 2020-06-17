@@ -18,8 +18,8 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import StyledRadio from "../elements/StyledRadio";
 // import Loader from "../UI/Loader";
 import UserController from "../Controller/UserController";
-// import AdminService from "../Controller/AdminService";
-// import SellerService from "../Controller/SellerService";
+import AdminController from "../Controller/AdminController";
+import SellerController from "../Controller/SellerController";
 
 class Login extends Component {
   state = {
@@ -76,7 +76,7 @@ class Login extends Component {
         .then((response) => {
           this.setState({
             open: true,
-            snackMessage: "Successfully loged-in",
+            snackMessage: " Login Successfull",
           });
           console.log(response.data.data);
           localStorage.setItem("UserToken", response.data.data);
@@ -87,41 +87,39 @@ class Login extends Component {
           console.log(error);
         });
     } else if (this.state.type === "Admin") {
-      //   AdminService.adminLogin(data)
-      //     .then((response) => {
-      //       this.setState({
-      //         open: true,
-      //         snackMessage: "Successfully loged-in",
-      //         loader: false,
-      //       });
-      //       console.log(response.data.object);
-      //       localStorage.setItem(
-      //         "UserToken",
-      //         JSON.stringify(response.data.object)
-      //       );
-      //     })
-      //     .catch((error) => {
-      //       this.setState({ loader: false });
-      //       console.log(error);
-      //     });
+      AdminController.adminLogin(data)
+        .then((response) => {
+          this.setState({
+            open: true,
+            snackMessage: "Successfully loged-in",
+            loader: false,
+          });
+          console.log(response.data.object);
+          localStorage.setItem(
+            "UserToken",
+            JSON.stringify(response.data.object)
+          );
+        })
+        .catch((error) => {
+          this.setState({ loader: false });
+          console.log(error);
+        });
     } else if (this.state.type === "Seller") {
-      //   SellerService.sellerLogin(data)
-      //     .then((response) => {
-      //       this.setState({
-      //         open: true,
-      //         snackMessage: "Successfully loged-in",
-      //         loader: false,
-      //       });
-      //       console.log(response.data.object);
-      //       localStorage.setItem(
-      //         "UserToken",
-      //         JSON.stringify(response.data.object)
-      //       );
-      //     })
-      // .catch((error) => {
-      //   this.setState({ loader: false });
-      //   console.log(error);
-      // });
+      SellerController.sellerLogin(data)
+        .then((response) => {
+          this.setState({
+            open: true,
+            snackMessage: "Successfully loged-in",
+            loader: false,
+          });
+          console.log(response.data.object);
+          localStorage.setItem("SellerToken", response.data.data);
+          this.props.history.push("/sellerBooks");
+        })
+        .catch((error) => {
+          this.setState({ loader: false });
+          console.log(error);
+        });
     }
   };
 
@@ -294,7 +292,7 @@ class Login extends Component {
                 }
               />
               <FormControlLabel
-                disabled
+                //disabled
                 value="Seller"
                 control={<StyledRadio />}
                 label={
@@ -309,8 +307,8 @@ class Login extends Component {
                   </div>
                 }
               />
-              {/* <FormControlLabel
-                disabled
+              <FormControlLabel
+                //disabled
                 value="Admin"
                 control={<StyledRadio />}
                 label={
@@ -324,7 +322,7 @@ class Login extends Component {
                     Admin
                   </div>
                 }
-              /> */}
+              />
             </RadioGroup>
           </div>
         </Card>

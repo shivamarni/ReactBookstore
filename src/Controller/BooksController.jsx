@@ -1,6 +1,6 @@
 import axios from "axios";
 //require("dotenv").config();
-
+const token = localStorage.getItem("SellerToken");
 var controller = {
   getallbooks(pageNo) {
     return axios.get(
@@ -9,6 +9,19 @@ var controller = {
       {
         headers: {
           pageNo: pageNo,
+          "Content-type": "application/json ",
+        },
+      }
+    );
+  },
+
+  getallsellerbooks() {
+    return axios.get(
+      //   process.env.REACT_APP_BASE_URL + `/book/displaybooks/${page}`
+      "http://localhost:8085/seller/getallsellerbooks",
+      {
+        headers: {
+          token: token,
           "Content-type": "application/json ",
         },
       }

@@ -19,7 +19,7 @@ import BookImage from "../Assets/book.svg";
 import "../CSS/books.scss";
 import Footer from "./Footer.jsx";
 import CartController from "../Controller/CartController";
-class Header extends Component {
+class AdminHeader extends Component {
   constructor(props) {
     super(props);
 
@@ -110,18 +110,18 @@ class Header extends Component {
                 </div>
               </div>
               <div className="cart-outer-div">
-                <div className="cart-heading">Cart</div>
-                <div className="cart-icon-div">
+                <div className="cart-heading">Admin</div>
+                {/* <div className="cart-icon-div">
                   <Badge
-                    //  badgeContent={<div>{this.state.cartCount}</div>}
+                    badgeContent={<div>{this.state.cartCount}</div>}
                     badgeContent={
                       <div className="cart-num">
-                        {/* {" "} */}
+                        {" "}
                         {this.props.numberOfCartBooks}
                       </div>
                     }
-                    // color="secondary"
-                    // overlap="circle"
+                    color="secondary"
+                    overlap="circle"
                     anchorOrigin={{
                       vertical: "top",
                       horizontal: "right",
@@ -132,7 +132,7 @@ class Header extends Component {
                       onClick={this.cartImageClick}
                     />
                   </Badge>
-                </div>
+                </div> */}
                 <div className="profile-avatar">
                   <Avatar
                     style={{ height: "39px" }}
@@ -140,7 +140,7 @@ class Header extends Component {
                     onClick={this.handleAvatarClick}
                   />
 
-                  <div className="menu-div">
+                  {/* <div className="menu-div">
                     <Menu
                       id="simple-menu"
                       anchorEl={() => this.state.anchorEl}
@@ -155,33 +155,33 @@ class Header extends Component {
                       keepMounted
                       open={Boolean(this.state.anchorEl)}
                       onClose={this.handleClose}
-                    >
-                      <MenuItem onClick={this.handleClose}>
+                    > */}
+                  {/* <MenuItem onClick={this.handleClose}>
                         <div className="outer-div-profilemenu">
                           <div className="profilemenu-icons">
                             <AccountCircleIcon />
                           </div>
                           <div>Profile</div>
                         </div>
-                      </MenuItem>
-                      <MenuItem onClick={this.handleClose}>
+                      </MenuItem> */}
+                  {/* <MenuItem onClick={this.handleClose}>
                         <div className="outer-div-profilemenu">
                           <div className="profilemenu-icons">
                             <FavoriteIcon />
                           </div>
                           <div>Wishlist</div>
                         </div>
-                      </MenuItem>
-                      <MenuItem onClick={this.handleClose}>
+                      </MenuItem> */}
+                  {/* <MenuItem onClick={this.handleClose}>
                         <div className="outer-div-profilemenu">
                           <div className="profilemenu-icons">
                             <LibraryBooksIcon />
                           </div>
                           <div>Orders</div>
                         </div>
-                      </MenuItem>
-                    </Menu>
-                  </div>
+                      </MenuItem> */}
+                  {/* </Menu>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -192,4 +192,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default AdminHeader;

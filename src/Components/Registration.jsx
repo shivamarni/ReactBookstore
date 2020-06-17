@@ -19,8 +19,8 @@ import classes from "../CSS/Registration.module.scss";
 import StyledRadio from "../elements/StyledRadio";
 //import Loader from "../UI/Loader";
 import UserController from "../Controller/UserController";
-//import SellerService from "../Controller/SellerController";
-import AdminService from "../Controller/AdminController";
+import SellerController from "../Controller/SellerController";
+import AdminController from "../Controller/AdminController";
 
 class Registration extends Component {
   state = {
@@ -76,25 +76,26 @@ class Registration extends Component {
           //   this.setState({ loader: false });
           console.log(error);
         });
-      // } else if (this.state.type === "Seller") {
-      //   SellerService.sellerRegistration(data)
-      //     .then((response) => {
-      //       this.setState({
-      //         open: true,
-      //         snackMessage: "Successfully loged-in",
-      //         // loader: false,
-      //       });
-      //     })
-      //     .catch((error) => {
-      //       this.setState({
-      //         open: true,
-      //         snackMessage: "Something went wrong",
-      //         // loader: false,
-      //       });
-      //       console.log(error);
-      //     });
+    } else if (this.state.type === "Seller") {
+      SellerController.sellerRegistration(data)
+        .then((response) => {
+          this.props.history.push("/login");
+          this.setState({
+            open: true,
+            snackMessage: "Successfully Registered",
+            // loader: false,
+          });
+        })
+        .catch((error) => {
+          this.setState({
+            open: true,
+            snackMessage: "Something went wrong",
+            // loader: false,
+          });
+          console.log(error);
+        });
     } else if (this.state.type === "Admin") {
-      AdminService.adminRegistration(data)
+      AdminController.adminRegistration(data)
         .then((response) => {
           this.setState({
             open: true,
@@ -354,7 +355,7 @@ class Registration extends Component {
                 }
               />
               <FormControlLabel
-                disabled
+                // disabled
                 value="Seller"
                 control={<StyledRadio />}
                 label={
@@ -370,7 +371,7 @@ class Registration extends Component {
                 }
               />
               <FormControlLabel
-                disabled
+                // disabled
                 value="Admin"
                 control={<StyledRadio />}
                 label={
