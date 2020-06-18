@@ -5,6 +5,28 @@ import BooksController from "../Controller/BooksController";
 import CartController from "../Controller/CartController";
 import GetSellerBooks from "./GetSellerBooks";
 import Dialog from "@material-ui/core/Dialog";
+import Button from "@material-ui/core/Button";
+import {
+  Paper,
+  Popover,
+  Snackbar,
+  Fade,
+  Tooltip,
+  Toolbar,
+  MuiThemeProvider,
+  IconButton,
+  Typography,
+  InputAdornment,
+  Card,
+  TextField,
+  Input,
+} from "@material-ui/core";
+
+import BookIcon from "@material-ui/icons/Book";
+import PersonIcon from "@material-ui/icons/Person";
+import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+import PetsIcon from "@material-ui/icons/Pets";
+import EditIcon from "@material-ui/icons/Edit";
 
 class SellerBook extends Component {
   constructor(props) {
@@ -18,6 +40,7 @@ class SellerBook extends Component {
       pageArray: [],
       pageNumber: 1,
       numberOfCartBooks: "",
+      openAddDialog: false,
     };
   }
 
@@ -84,6 +107,12 @@ class SellerBook extends Component {
       this.setState({
         pageArray: tempPageArr,
       });
+    });
+  };
+
+  handleAddDialogClick = async () => {
+    await this.setState({
+      openAddDialog: !this.state.openAddDialog,
     });
   };
 
@@ -218,12 +247,20 @@ class SellerBook extends Component {
               </div>
               <div className="sort-div">
                 <div class="dropdown">
-                  <button class="dropbtn">
-                    <div className="visiblesort-div1">
-                      <div> ADD BOOKS {this.state.visibleSort}</div>
-                      {/* <div className="arrow-symbol-div">⌄</div> */}
-                    </div>
-                  </button>
+                  {/* <button class="dropbtn"> */}
+                  {/* <div className="visiblesort-div1"> */}
+                  <div>
+                    {" "}
+                    <Button
+                      id="div-bagbutton6"
+                      onClick={() => this.handleAddDialogClick()}
+                    >
+                      ADD Books
+                    </Button>
+                  </div>
+                  {/* <div className="arrow-symbol-div">⌄</div> */}
+                  {/* </div> */}
+                  {/* </button> */}
                   {/* <div class="dropdown-content">{displaySorts}</div> */}
                 </div>
               </div>
@@ -234,6 +271,146 @@ class SellerBook extends Component {
             <Footer />
           </div>
         </div>
+        <Dialog
+          open={this.state.openAddDialog}
+          onClose={this.handleDialogClickaway}
+        >
+          <div>
+            <Card id="card_decordialog" variant="outlined">
+              <div className="dialog_title">Addbook</div>
+              <div className="box_bookname">
+                <TextField
+                  autoComplete="of"
+                  style={{
+                    marginBottom: "7px",
+                    width: "91%",
+                    marginLeft: "-4%",
+                  }}
+                  name="name"
+                  id="name"
+                  // value={fields.name}
+                  // error={valid.name}
+                  // helperText={valid.name ? errors.name : "Name"}
+                  onChange={this.changeHandler}
+                  label="BookName"
+                  variant="outlined"
+                  size="medium"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <BookIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="box_bookauthor">
+                <TextField
+                  autoComplete="of"
+                  style={{
+                    marginBottom: "7px",
+                    width: "91%",
+                    marginLeft: "-4%",
+                  }}
+                  name="name"
+                  id="name"
+                  // value={fields.name}
+                  // error={valid.name}
+                  // helperText={valid.name ? errors.name : "Name"}
+                  onChange={this.changeHandler}
+                  label="BookAuthor"
+                  variant="outlined"
+                  size="medium"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <PersonIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="box_bookprice">
+                <TextField
+                  autoComplete="of"
+                  style={{ marginBottom: "7px" }}
+                  name="name"
+                  id="name"
+                  // value={fields.name}
+                  // error={valid.name}
+                  // helperText={valid.name ? errors.name : "Name"}
+                  onChange={this.changeHandler}
+                  label="price"
+                  variant="outlined"
+                  size="medium"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <AttachMoneyIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="box_noOfBooks">
+                <TextField
+                  autoComplete="of"
+                  style={{ marginBottom: "7px" }}
+                  name="name"
+                  id="name"
+                  // value={fields.name}
+                  // error={valid.name}
+                  // helperText={valid.name ? errors.name : "Name"}
+                  onChange={this.changeHandler}
+                  label="noOfBooks"
+                  variant="outlined"
+                  size="medium"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <PetsIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="box_description">
+                <TextField
+                  autoComplete="of"
+                  style={{
+                    marginBottom: "7px",
+                    width: "91%",
+                    marginLeft: "-4%",
+                  }}
+                  name="name"
+                  id="name"
+                  // value={fields.name}
+                  // error={valid.name}
+                  // helperText={valid.name ? errors.name : "Name"}
+                  onChange={this.changeHandler}
+                  label="bookDescription"
+                  variant="outlined"
+                  size="medium"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <EditIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="div-buttons2">
+                <Button
+                  id="div-bagbutton2"
+                  onClick={() => this.handleAddDialogClick()}
+                >
+                  ADD
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </Dialog>
       </div>
     );
   }

@@ -13,6 +13,20 @@ var SellerController = {
     );
   },
 
+  updateBooks(bookDetails) {
+    // console.log("controller register method ", registrationDetails);
+    return (
+      axios.post("http://localhost:8085/book/update", bookDetails),
+      {
+        headers: {
+          bookId: bookDetails.bookId,
+          token: token,
+          "Content-type": "application/json ",
+        },
+      }
+    );
+  },
+
   getprofilelink() {
     return axios.post(`http://localhost:8085/user/files/link`, null, {
       headers: { token: token, "Content-type": "application/json " },

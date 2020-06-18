@@ -1,6 +1,14 @@
 import React, { Component } from "react";
-import { Paper, Button, Popover, Snackbar } from "@material-ui/core";
+import {
+  Paper,
+  Button,
+  Popover,
+  Snackbar,
+  Dialog,
+  Card,
+} from "@material-ui/core";
 import CartController from "../Controller/CartController";
+import BookController from "../Controller/BooksController";
 
 class GetAdminBooks extends Component {
   constructor(props) {
@@ -13,6 +21,8 @@ class GetAdminBooks extends Component {
       snackMessage: "",
       open: false,
       addedToCart: false,
+      approveState: false,
+      disapproveState: false,
     };
     //this.handleAddToBagClick = this.handleAddToBagClick.bind(this);
     //this.handleClose = this.handleClose.bind(this);
@@ -32,6 +42,31 @@ class GetAdminBooks extends Component {
       return { open: !currentState.open };
     });
   };
+
+  handleApproveClick = async () => {
+    await this.setState({
+      approveState: !this.state.approveState,
+    });
+  };
+
+  handleDisapproveClick = async () => {
+    await this.setState({
+      disapproveState: !this.state.disapproveState,
+    });
+  };
+
+  handleApproveBookCancel = async () => {
+    await this.setState({
+      approveState: !this.state.approveState,
+    });
+  };
+
+  handleDisApproveBookCancel = async () => {
+    await this.setState({
+      disapproveState: !this.state.disapproveState,
+    });
+  };
+
   handleAddToBagClick = () => {
     let token = localStorage.getItem("UserToken");
     if (token) {
@@ -72,6 +107,26 @@ class GetAdminBooks extends Component {
     }
   };
 
+  handleApproveBook = async () => {
+    BookController.verifyBook(this.state.item.bookId).then((res) => {
+      if (res.data.statusCode === 200) {
+        this.setState({
+          approveState: !this.state.approveState,
+        });
+      }
+    });
+  };
+
+  handleDisApproveBook = async () => {
+    BookController.verifyBook(this.state.item.bookId).then((res) => {
+      if (res.data.statusCode === 200) {
+        this.setState({
+          disapproveState: !this.state.disapproveState,
+        });
+      }
+    });
+  };
+
   render() {
     console.log(this.state.open);
 
@@ -99,28 +154,22 @@ class GetAdminBooks extends Component {
             <div className="div-bookname1">{this.state.item.bookName}</div>
             <div className="div-author1"> {this.state.item.bookAuthor}</div>
             <div className="div-price1">Rs. {this.state.item.bookPrice}</div>
-            <div className="div-seller">Seller:</div>
-            <div className="admin-description1">Description:</div>
+            <div className="div-seller">Seller:Shiva Marni</div>
+            <div className="admin-description1">
+              Description:{this.state.item.bookDescription}
+            </div>
             <div className="div-buttons5">
-              {this.state.addedToCart ? (
-                <Button
-                  id="div-bagbutton5"
-                  onClick={() => this.handleAddToBagClick()}
-                >
-                  Added To Bag
-                </Button>
-              ) : (
-                <Button
-                  id="div-bagbutton5"
-                  onClick={() => this.handleAddToBagClick()}
-                >
-                  DISAPPROVE
-                </Button>
-              )}
+              <Button
+                id="div-bagbutton5"
+                onClick={() => this.handleDisapproveClick()}
+              >
+                DISAPPROVE
+              </Button>
+
               <Button
                 id="div-approve"
                 variant="outlined"
-                onClick={this.handleWishlistClick}
+                onClick={this.handleApproveClick}
               >
                 APPROVE
               </Button>
@@ -129,6 +178,56 @@ class GetAdminBooks extends Component {
         </Paper>
 
         <Popover open={this.state.descOpen}></Popover>
+        <Dialog
+          open={this.state.approveState}
+          onClose={this.handleDialogClickaway}
+        >
+          <div>
+            <Card id="card_decordialog2" variant="outlined">
+              <div className="dia-text"> Are You Sure to Approve Book?</div>
+              <div className="div-can">
+                <Button
+                  id="div-cancel1"
+                  onClick={() => this.handleApproveBookCancel()}
+                >
+                  cancel
+                </Button>
+              </div>
+              <div className="div-ok">
+                <Button id="div-ok1" onClick={() => this.handleApproveBook()}>
+                  ok
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </Dialog>
+
+        <Dialog
+          open={this.state.disapproveState}
+          onClose={this.handleDialogClickaway}
+        >
+          <div>
+            <Card id="card_decordialog2" variant="outlined">
+              <div className="dia-text"> Are You Sure to DisApprove Book?</div>
+              <div className="div-can">
+                <Button
+                  id="div-cancel2"
+                  onClick={() => this.handleDisApproveBookCancel()}
+                >
+                  cancel
+                </Button>
+              </div>
+              <div className="div-ok">
+                <Button
+                  id="div-ok2"
+                  onClick={() => this.handleDisApproveBook()}
+                >
+                  ok
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </Dialog>
       </div>
     );
   }

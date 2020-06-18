@@ -166,6 +166,24 @@
   height: 26px;
   margin-left: 2%;
 }
+.div-ok {
+  margin-left: 82%;
+  margin-top: -36px;
+  background-color: lime;
+  width: 14%;
+}
+.div-can {
+  opacity: 1;
+  width: 15%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  padding-top: 5px;
+  height: 30px;
+  margin-left: 64%;
+  background-color: orangered;
+}
 .div-buttons1 {
   opacity: 1;
   width: 86%;
@@ -198,8 +216,9 @@
   justify-content: space-between;
   // margin-top: "5%";
   padding-top: 15px;
-  height: 26px;
+  height: 31px;
   margin-left: 2%;
+  margin-bottom: -5%;
 }
 #div-bagbutton {
   font: Medium 13px/15px Lato;
@@ -212,6 +231,18 @@
   border: none;
   cursor: pointer;
   font-size: 9px;
+}
+#div-bagbutton6 {
+  font: Medium 13px/15px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+  opacity: 1;
+  background: #a03037 0% 0% no-repeat padding-box;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
 }
 .admin-description1 {
   margin-left: -19%;
@@ -358,6 +389,7 @@
   margin: 0 auto;
   height: 142vh;
   z-index: 0;
+  // overflow: hidden;
 }
 #appbar-card {
   background-color: #a03037;
@@ -498,8 +530,40 @@
   display: flex;
   margin: auto;
   // width: 40%;
-  width: 350px;
-  padding-bottom: 10%;
+  width: 380px;
+  padding-bottom: 12%;
+  padding-top: 5%;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.2);
+}
+
+#card_decordialog1 {
+  // padding: 140px;
+  // padding-bottom: 75%;
+  display: flex;
+  margin: auto;
+  // width: 40%;
+  width: 468px;
+  padding-bottom: 12%;
+  padding-top: 5%;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.2);
+}
+.dia-text {
+  margin-left: 4%;
+  margin-top: -2%;
+}
+#card_decordialog2 {
+  // padding: 140px;
+  // padding-bottom: 75%;
+  display: flex;
+  margin: auto;
+  // width: 40%;
+  width: 542px;
+  padding-bottom: 1%;
+  padding-top: 5%;
   justify-content: center;
   flex-direction: column;
   box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.2);
@@ -512,21 +576,21 @@
   margin-top: 5%;
 }
 .box_bookprice {
-  margin-left: 14%;
+  margin-left: 11%;
   margin-top: 5%;
-  width: 35%;
+  width: 38%;
 }
 .box_noOfBooks {
   margin-left: 51%;
-  margin-top: -13%;
-  width: 35%;
+  margin-top: -16%;
+  width: 38%;
 }
 .box_description {
   margin-left: 14%;
   margin-top: 5%;
 }
 .dialog_title {
-  margin-top: 12px;
+  margin-top: -2px;
   margin-bottom: 10px;
   font-size: 1.5rem;
   font-weight: 400;

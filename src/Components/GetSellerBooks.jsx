@@ -23,6 +23,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import PetsIcon from "@material-ui/icons/Pets";
 import EditIcon from "@material-ui/icons/Edit";
+import SellerController from "../Controller/SellerController.jsx";
 
 class GetSellerBooks extends Component {
   constructor(props) {
@@ -35,7 +36,12 @@ class GetSellerBooks extends Component {
       snackMessage: "",
       open: false,
       addedToCart: false,
-      openDialog: false,
+      openUpdateDialog: false,
+      bookName: "",
+      bookPrice: "",
+      bookDescription: "",
+      bookAuthor: "",
+      noOfBooks: "",
     };
     //this.handleAddToBagClick = this.handleAddToBagClick.bind(this);
     //this.handleClose = this.handleClose.bind(this);
@@ -50,18 +56,62 @@ class GetSellerBooks extends Component {
     };
   }
 
+  changeName = async (event) => {
+    await this.setState({ bookName: event.target.value });
+    console.log(this.state.bookName);
+  };
+  changePrice = async (event) => {
+    await this.setState({ bookPrice: event.target.value });
+    console.log(this.state.bookPrice);
+  };
+  changeDescription = async (event) => {
+    await this.setState({ bookDescription: event.target.value });
+    console.log(this.state.bookDescription);
+  };
+  changeAuthor = async (event) => {
+    await this.setState({ bookAuthor: event.target.value });
+    console.log(this.state.bookAuthor);
+  };
+  changeNoOfBooks = async (event) => {
+    await this.setState({ noOfBooks: event.target.value });
+    console.log(this.state.noOfBooks);
+  };
+
+  handleUpdateBook = () => {
+    var bookDetails = {
+      bookName: this.state.bookName,
+
+      bookPrice: this.state.bookPrice,
+      bookDescription: this.state.bookDescription,
+      bookAuthor: this.state.bookAuthor,
+      noOfBooks: this.state.noOfBooks,
+      bookId: this.state.item.bookId,
+    };
+
+    SellerController.updateBooks(bookDetails).then((res) => {
+      if (res.data.statusCode === 200) {
+        console.log(res);
+
+        // this.setState({
+        //   error: true,
+        //   message: "Registration success",
+        // });
+      }
+    });
+  };
+
   handleClose = () => {
     this.setState((currentState) => {
       return { open: !currentState.open };
     });
   };
 
-  handleDialogClick = async () => {
-    console.log("check here", this.state.openDialog);
+  handleUpdateDialogClick = async () => {
+    console.log("check here", this.state.openUpdateDialog);
     await this.setState({
-      openDialog: true,
+      openUpdateDialog: !this.state.openUpdateDialog,
     });
-    console.log("check here", this.state.openDialog);
+    console.log("check here", this.state.openUpdateDialog);
   };
 
   render() {
@@ -104,7 +154,7 @@ class GetSellerBooks extends Component {
             <div className="div-buttons">
               <Button
                 id="div-bagbutton1"
-                onClick={() => this.handleDialogClick()}
+                onClick={() => this.handleUpdateBook()}
               >
                 UPDATE BOOK
               </Button>
@@ -122,7 +172,7 @@ class GetSellerBooks extends Component {
         <Popover open={this.state.descOpen}></Popover>
         <div className="dialog_note">
           <Dialog
-            open={this.state.openDialog}
+            open={this.state.openUpdateDialog}
             onClose={this.handleDialogClickaway}
           >
             <div>
@@ -131,16 +181,22 @@ class GetSellerBooks extends Component {
                 <div className="box_bookname">
                   <TextField
                     autoComplete="of"
-                    style={{ marginBottom: "7px" }}
-                    name="name"
-                    id="name"
-                    // value={fields.name}
+                    style={{
+                      marginBottom: "7px",
+                      width: "91%",
+                      marginLeft: "-4%",
+                    }}
+                    // style={{ width: "95%" }}
+                    // style={{ marginLeft: "-5" }}
+                    name="bookName"
+                    id="bookName"
+                    value={this.state.bookName}
                     // error={valid.name}
                     // helperText={valid.name ? errors.name : "Name"}
-                    onChange={this.changeHandler}
+                    onChange={this.changeName}
                     label="BookName"
                     variant="outlined"
-                    size="small"
+                    size="medium"
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="start">
@@ -153,16 +209,20 @@ class GetSellerBooks extends Component {
                 <div className="box_bookauthor">
                   <TextField
                     autoComplete="of"
-                    style={{ marginBottom: "7px" }}
-                    name="name"
-                    id="name"
-                    // value={fields.name}
+                    style={{
+                      marginBottom: "7px",
+                      width: "91%",
+                      marginLeft: "-4%",
+                    }}
+                    name="bookAuthor"
+                    id="bookAuthor"
+                    value={this.state.bookAuthor}
                     // error={valid.name}
                     // helperText={valid.name ? errors.name : "Name"}
-                    onChange={this.changeHandler}
+                    onChange={this.changeAuthor}
                     label="BookAuthor"
                     variant="outlined"
-                    size="small"
+                    size="medium"
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -176,15 +236,15 @@ class GetSellerBooks extends Component {
                   <TextField
                     autoComplete="of"
                     style={{ marginBottom: "7px" }}
-                    name="name"
-                    id="name"
-                    // value={fields.name}
+                    name="bookPrice"
+                    id="bookPrice"
+                    value={this.state.bookPrice}
                     // error={valid.name}
                     // helperText={valid.name ? errors.name : "Name"}
-                    onChange={this.changeHandler}
-                    label="price"
+                    onChange={this.changePrice}
+                    label="BookPrice"
                     variant="outlined"
-                    size="small"
+                    size="medium"
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -198,15 +258,15 @@ class GetSellerBooks extends Component {
                   <TextField
                     autoComplete="of"
                     style={{ marginBottom: "7px" }}
-                    name="name"
-                    id="name"
+                    name="noOfBooks"
+                    id="noOfBooks"
                     // value={fields.name}
                     // error={valid.name}
                     // helperText={valid.name ? errors.name : "Name"}
-                    onChange={this.changeHandler}
+                    onChange={this.changeNoOfBooks}
                     label="noOfBooks"
                     variant="outlined"
-                    size="small"
+                    size="medium"
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -219,16 +279,20 @@ class GetSellerBooks extends Component {
                 <div className="box_description">
                   <TextField
                     autoComplete="of"
-                    style={{ marginBottom: "7px" }}
-                    name="name"
-                    id="name"
-                    // value={fields.name}
+                    style={{
+                      marginBottom: "7px",
+                      width: "91%",
+                      marginLeft: "-4%",
+                    }}
+                    name="bookDescription"
+                    id="bookDescription"
+                    value={this.state.bookDescription}
                     // error={valid.name}
                     // helperText={valid.name ? errors.name : "Name"}
-                    onChange={this.changeHandler}
-                    label="bookDescription"
+                    onChange={this.changeDescription}
+                    label="Book Description"
                     variant="outlined"
-                    size="small"
+                    size="medium"
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -241,7 +305,7 @@ class GetSellerBooks extends Component {
                 <div className="div-buttons2">
                   <Button
                     id="div-bagbutton2"
-                    onClick={() => this.handleDialogClick()}
+                    onClick={() => this.handleUpdateDialogClick()}
                   >
                     UPDATE
                   </Button>

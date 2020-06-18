@@ -15,6 +15,20 @@ var controller = {
     );
   },
 
+  verifyBook(bookId) {
+    return axios.post(
+      //   process.env.REACT_APP_BASE_URL + `/book/displaybooks/${page}`
+      "http://localhost:8085/book/verify",
+      null,
+      {
+        headers: {
+          bookId: bookId,
+          "Content-type": "application/json ",
+        },
+      }
+    );
+  },
+
   getallsellerbooks() {
     return axios.get(
       //   process.env.REACT_APP_BASE_URL + `/book/displaybooks/${page}`
@@ -55,6 +69,19 @@ var controller = {
       {
         headers: {
           pageNo: pageNo,
+          "Content-type": "application/json ",
+        },
+      }
+    );
+  },
+  updateBooks(bookDetails) {
+    // console.log("controller register method ", registrationDetails);
+    return (
+      axios.post("http://localhost:8085/book/update", bookDetails),
+      {
+        headers: {
+          bookId: bookDetails.bookId,
+          token: token,
           "Content-type": "application/json ",
         },
       }
