@@ -77,7 +77,8 @@ class GetSellerBooks extends Component {
     console.log(this.state.noOfBooks);
   };
 
-  handleUpdateBook = () => {
+  handleUpdateBook = async () => {
+    console.log(this.state.bookName);
     var bookDetails = {
       bookName: this.state.bookName,
 
@@ -85,19 +86,16 @@ class GetSellerBooks extends Component {
       bookDescription: this.state.bookDescription,
       bookAuthor: this.state.bookAuthor,
       noOfBooks: this.state.noOfBooks,
-      bookId: this.state.item.bookId,
     };
+    console.log(bookDetails);
 
-    SellerController.updateBooks(bookDetails).then((res) => {
-      if (res.data.statusCode === 200) {
-        console.log(res);
-
-        // this.setState({
-        //   error: true,
-        //   message: "Registration success",
-        // });
+    SellerController.updateBook(bookDetails, this.state.item.bookId).then(
+      (res) => {
+        if (res.data.statusCode === 200) {
+          console.log(res);
+        }
       }
-    });
+    );
   };
 
   handleClose = () => {
@@ -154,7 +152,7 @@ class GetSellerBooks extends Component {
             <div className="div-buttons">
               <Button
                 id="div-bagbutton1"
-                onClick={() => this.handleUpdateBook()}
+                onClick={() => this.handleUpdateDialogClick()}
               >
                 UPDATE BOOK
               </Button>
@@ -305,7 +303,7 @@ class GetSellerBooks extends Component {
                 <div className="div-buttons2">
                   <Button
                     id="div-bagbutton2"
-                    onClick={() => this.handleUpdateDialogClick()}
+                    onClick={() => this.handleUpdateBook()}
                   >
                     UPDATE
                   </Button>

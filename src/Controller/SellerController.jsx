@@ -13,14 +13,18 @@ var SellerController = {
     );
   },
 
-  updateBooks(bookDetails) {
-    // console.log("controller register method ", registrationDetails);
-    return (
-      axios.post("http://localhost:8085/book/update", bookDetails),
+  updateBook(bookDetails, bookId) {
+    //console.log("controller register method ", registrationDetails);
+    console.log("inside controller", bookDetails);
+    return axios.post(
+      `http://localhost:8085/book/updateBook/${bookId}`,
+
+      bookDetails,
+
       {
         headers: {
-          bookId: bookDetails.bookId,
           token: token,
+
           "Content-type": "application/json ",
         },
       }
