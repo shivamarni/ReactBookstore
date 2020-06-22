@@ -44,6 +44,7 @@ class GetSellerBooks extends Component {
       noOfBooks: "",
     };
     //this.handleAddToBagClick = this.handleAddToBagClick.bind(this);
+
     //this.handleClose = this.handleClose.bind(this);
   }
 
@@ -78,7 +79,6 @@ class GetSellerBooks extends Component {
   };
 
   handleUpdateBook = async () => {
-    console.log(this.state.bookName);
     var bookDetails = {
       bookName: this.state.bookName,
 
@@ -105,11 +105,23 @@ class GetSellerBooks extends Component {
   };
 
   handleUpdateDialogClick = async () => {
+    // this.getBookDetails();
     console.log("check here", this.state.openUpdateDialog);
+
     await this.setState({
       openUpdateDialog: !this.state.openUpdateDialog,
     });
+
     console.log("check here", this.state.openUpdateDialog);
+  };
+  getBookDetails = async () => {
+    await SellerController.getBookDetails(this.state.item.bookId).then(
+      (response) => {
+        if (response.data.statusCode) {
+          console.log(response.data.data);
+        }
+      }
+    );
   };
 
   render() {
@@ -149,21 +161,13 @@ class GetSellerBooks extends Component {
             {/* <div className="div-quantity">
               books left {this.state.item.noOfBooks}
             </div> */}
-            <div className="div-buttons">
+            <div className="div-buttons4">
               <Button
                 id="div-bagbutton1"
                 onClick={() => this.handleUpdateDialogClick()}
               >
                 UPDATE BOOK
               </Button>
-
-              {/* <Button
-                id="div-wishlistbutton"
-                variant="outlined"
-                onClick={this.handleWishlistClick}
-              >
-                Wishlist
-              </Button> */}
             </div>
           </div>
         </Paper>
@@ -299,6 +303,15 @@ class GetSellerBooks extends Component {
                       ),
                     }}
                   />
+                </div>
+                <div className="choose-file">
+                  <div className="choose-file1">
+                    <input
+                      type="file"
+                      onChange={this.onChangeImage}
+                      style={{ marginLeft: "11%", marginTop: "5%" }}
+                    />
+                  </div>
                 </div>
                 <div className="div-buttons2">
                   <Button

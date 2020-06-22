@@ -73,8 +73,8 @@ class AdminHeader extends Component {
       <div>
         {/* <Footer /> */}
         <div>
-          <Card id="appbar-card">
-            <div className="appbar-card-div">
+          <Card id="appbar-card1">
+            <div className="appbar-card-div1">
               <div className="logo-div">
                 <div>
                   <img

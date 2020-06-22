@@ -185,7 +185,7 @@ class GetAdminBooks extends Component {
           <div>
             <Card id="card_decordialog2" variant="outlined">
               <div className="dia-text"> Are You Sure to Approve Book?</div>
-              <div className="div-can">
+              <div className="div-can1">
                 <Button
                   id="div-cancel1"
                   onClick={() => this.handleApproveBookCancel()}
@@ -209,9 +209,9 @@ class GetAdminBooks extends Component {
           <div>
             <Card id="card_decordialog2" variant="outlined">
               <div className="dia-text"> Are You Sure to DisApprove Book?</div>
-              <div className="div-can">
+              <div className="div-can1">
                 <Button
-                  id="div-cancel2"
+                  id="div-cancel1"
                   onClick={() => this.handleDisApproveBookCancel()}
                 >
                   cancel
@@ -219,7 +219,7 @@ class GetAdminBooks extends Component {
               </div>
               <div className="div-ok">
                 <Button
-                  id="div-ok2"
+                  id="div-ok1"
                   onClick={() => this.handleDisApproveBook()}
                 >
                   ok

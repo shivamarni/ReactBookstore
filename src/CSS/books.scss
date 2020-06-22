@@ -7,6 +7,7 @@
   height: 200vh;
   margin-top: 12vh;
   cursor: pointer;
+  overflow: hidden;
 }
 
 #profile-paper {
@@ -164,15 +165,41 @@
   margin-top: "1px";
   padding-top: 5px;
   height: 26px;
-  margin-left: 2%;
+  margin-left: -18%;
+}
+.div-buttons4 {
+  opacity: 1;
+  width: 86%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: "1px";
+  padding-top: 5px;
+  height: 26px;
+  margin-left: 3%;
 }
 .div-ok {
-  margin-left: 82%;
-  margin-top: -36px;
+  margin-left: 84%;
+  height: 32px;
+  margin-top: -6%;
+  padding-bottom: -9%;
+  padding-top: -8%;
   background-color: lime;
   width: 14%;
 }
-.div-can {
+.div-can1 {
+  opacity: 1;
+  width: 15%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  padding-top: 1%;
+  height: 26px;
+  margin-left: 67%;
+  background-color: red;
+}
+.div-can2 {
   opacity: 1;
   width: 15%;
   margin: 0 auto;
@@ -180,9 +207,22 @@
   justify-content: space-between;
 
   padding-top: 5px;
-  height: 30px;
+  height: 26px;
   margin-left: 64%;
-  background-color: orangered;
+  background-color: red;
+}
+.div-cancel1 {
+  color: white;
+
+  margin-top: -8%;
+  padding-top: 13%;
+}
+#div-cancel1 {
+  color: white;
+}
+#div-ok1 {
+  color: white;
+  margin-left: 5%;
 }
 .div-buttons1 {
   opacity: 1;
@@ -210,15 +250,35 @@
 }
 .div-buttons2 {
   opacity: 1;
-  width: 86%;
+  width: 91%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   // margin-top: "5%";
   padding-top: 15px;
   height: 31px;
-  margin-left: 2%;
+  margin-left: -1%;
   margin-bottom: -5%;
+}
+#div-buttons3 {
+  // opacity: 1;
+  // width: 86%;
+  // margin: 0 auto;
+  // display: flex;
+  // justify-content: space-between;
+  // // margin-top: "5%";
+  // padding-top: 15px;
+  // height: 31px;
+  // margin-left: 2%;
+  // margin-bottom: -5%;
+  margin-left: 10%;
+  background: #a03037 0% 0% no-repeat padding-box;
+  color: #ffffff;
+  /* margin-top: 5%; */
+  margin-bottom: -14%;
+  padding-bottom: 3%;
+  padding-bottom: -2%;
+  width: 79%;
 }
 #div-bagbutton {
   font: Medium 13px/15px Lato;
@@ -280,13 +340,14 @@
   color: #ffffff;
   text-transform: uppercase;
   opacity: 1;
-  background: orangered;
+  background: red;
   border-radius: 2px;
   border: none;
   cursor: pointer;
-  font-size: 11px;
-  width: 61%;
-  margin-left: -16%;
+  font-size: 67%;
+  width: 67%;
+  margin-left: -22%;
+  margin-top: -2%;
 }
 
 // .outerdiv-books:hover {
@@ -316,12 +377,15 @@
   color: #ffffff;
   cursor: pointer;
   outline: auto;
-  height: 29px;
+  height: 30px;
   margin-right: -12%;
-  width: 61%;
-  font-size: 11px;
+
   background-color: lime;
-  margin-top: -1px;
+  margin-right: -15%;
+
+  font-size: 70%;
+  width: 67%;
+  margin-top: -2%;
 }
 .book-image {
   height: 3.3cm;
@@ -385,7 +449,7 @@
   box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0);
 }
 .content-div {
-  width: 79%;
+  width: 75%;
   margin: 0 auto;
   height: 142vh;
   z-index: 0;
@@ -400,8 +464,25 @@
   top: 0;
   z-index: 9999;
 }
+#appbar-card1 {
+  background-color: #a03037;
+  border-radius: 0px;
+  height: 8vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
 
 .appbar-card-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: "100%";
+  margin-top: 4px;
+  // height: 7vh;
+}
+.appbar-card-div1 {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -427,12 +508,66 @@
     margin-top: 9px !important;
     margin-left: 30px;
   }
+
   .cart-icon-div {
     width: 30%;
     display: flex;
 
     font-size: 30px;
     margin-top: -5px !important;
+  }
+  #card_decordialog {
+    display: flex;
+    margin: auto;
+    width: 100% !important;
+    padding-bottom: 12%;
+    padding-top: 5%;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.2);
+  }
+  #card_decordialog2 {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    padding-bottom: 1%;
+    padding-top: 5%;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.2);
+  }
+  #div-bagbutton5 {
+    font: Medium 13px/15px Lato;
+    letter-spacing: 0px;
+    color: #ffffff;
+    text-transform: uppercase;
+    opacity: 1;
+    background: red;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    font-size: 53%;
+    width: 67%;
+    margin-left: -24%;
+    margin-top: -2%;
+  }
+  #div-approve {
+    font: medium 11px/13px Lato;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    opacity: 1;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: auto;
+    height: 29px;
+    margin-right: -12%;
+    background-color: lime;
+    margin-right: -15%;
+    font-size: 53%;
+    width: 67%;
+    margin-top: -6%;
   }
 }
 #appbar-search-paper {
@@ -585,6 +720,11 @@
   margin-top: -16%;
   width: 38%;
 }
+.box_noOfBooks1 {
+  margin-left: 51%;
+  margin-top: -17%;
+  width: 38%;
+}
 .box_description {
   margin-left: 14%;
   margin-top: 5%;
@@ -613,6 +753,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-x: hidden;
+  // overflow-y: hidden;
 }
 @media (max-width: 700px) {
   .visiblesort-div {
@@ -621,6 +763,50 @@
     font-size: 5px;
     margin-top: -12px;
     height: 9px;
+  }
+  .admin-description1 {
+    margin-left: -56%;
+    margin-top: 21%;
+  }
+  .div-buttons5 {
+    opacity: 1;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8%;
+    padding-top: 7%;
+    height: 26px;
+    width: 14%;
+    margin-left: -8%;
+  }
+
+  .box_noOfBooks {
+    margin-left: 51%;
+    margin-top: -24% !important;
+    width: 38%;
+  }
+  .box_noOfBooks1 {
+    margin-left: 51%;
+    margin-top: -25%;
+    width: 38%;
+  }
+  #paper-book1 {
+    width: 100%;
+    height: 260px;
+    background-color: white;
+    cursor: pointer;
+    margin-left: -2%;
+    margin-right: 21px;
+    margin-bottom: 20px;
+    margin-top: 6px;
+    box-shadow: 1 4px 8px 0 rgba(0, 0, 0, 0), 1 6px 8px 0 rgba(0, 0, 0, 0);
+  }
+  .outer-details-div1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 59%;
+    margin-top: -47%;
   }
 }
 .visiblesort-div {
@@ -637,6 +823,11 @@
     font-size: 5px;
     margin-top: -12px !important;
     height: 9px;
+  }
+  .admin-description1 {
+    margin-left: -56%;
+    margin-top: 21%;
+    width: 99%;
   }
 }
 .visiblesort-div1 {
@@ -924,6 +1115,7 @@
     height: 720vh;
     margin-top: 12vh;
     cursor: pointer;
+
     // z-index: -1;
   }
   .count-div {
@@ -1008,6 +1200,7 @@
     text-decoration: none;
     display: block;
   }
+
   .div-authorwishlist-wishlist {
     width: 86%;
     margin: 0 auto;

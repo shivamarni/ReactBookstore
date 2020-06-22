@@ -83,6 +83,31 @@ class SellerBook extends Component {
   //   });
   // };
 
+  changeName = async (event) => {
+    await this.setState({ bookName: event.target.value });
+    console.log(this.state.bookName);
+  };
+  changePrice = async (event) => {
+    await this.setState({ bookPrice: event.target.value });
+    console.log(this.state.bookPrice);
+  };
+  changeDescription = async (event) => {
+    await this.setState({ bookDescription: event.target.value });
+    console.log(this.state.bookDescription);
+  };
+  changeAuthor = async (event) => {
+    await this.setState({ bookAuthor: event.target.value });
+    console.log(this.state.bookAuthor);
+  };
+  changeNoOfBooks = async (event) => {
+    await this.setState({ noOfBooks: event.target.value });
+    console.log(this.state.noOfBooks);
+  };
+  onChangeImage = async (e) => {
+    await this.setState({ file: e.target.files[0] });
+    this.setState({ added: this.state.file.name });
+  };
+
   getsellerbooks = async () => {
     console.log("inside methioddddddddd");
     await BooksController.getallsellerbooks().then((res) => {
@@ -286,12 +311,12 @@ class SellerBook extends Component {
                     width: "91%",
                     marginLeft: "-4%",
                   }}
-                  name="name"
-                  id="name"
-                  // value={fields.name}
+                  name="bookName"
+                  id="bookName"
+                  value={this.state.bookName}
                   // error={valid.name}
                   // helperText={valid.name ? errors.name : "Name"}
-                  onChange={this.changeHandler}
+                  onChange={this.changeName}
                   label="BookName"
                   variant="outlined"
                   size="medium"
@@ -312,12 +337,12 @@ class SellerBook extends Component {
                     width: "91%",
                     marginLeft: "-4%",
                   }}
-                  name="name"
-                  id="name"
-                  // value={fields.name}
+                  name="bookAuthor"
+                  id="bookAuthor"
+                  value={this.state.bookAuthor}
                   // error={valid.name}
                   // helperText={valid.name ? errors.name : "Name"}
-                  onChange={this.changeHandler}
+                  onChange={this.changeAuthor}
                   label="BookAuthor"
                   variant="outlined"
                   size="medium"
@@ -334,13 +359,13 @@ class SellerBook extends Component {
                 <TextField
                   autoComplete="of"
                   style={{ marginBottom: "7px" }}
-                  name="name"
-                  id="name"
-                  // value={fields.name}
+                  name="bookPrice"
+                  id="bookPrice"
+                  value={this.state.bookPrice}
                   // error={valid.name}
                   // helperText={valid.name ? errors.name : "Name"}
-                  onChange={this.changeHandler}
-                  label="price"
+                  onChange={this.changePrice}
+                  label="BookPrice"
                   variant="outlined"
                   size="medium"
                   InputProps={{
@@ -352,16 +377,16 @@ class SellerBook extends Component {
                   }}
                 />
               </div>
-              <div className="box_noOfBooks">
+              <div className="box_noOfBooks1">
                 <TextField
                   autoComplete="of"
                   style={{ marginBottom: "7px" }}
-                  name="name"
-                  id="name"
+                  name="noOfBooks"
+                  id="noOfBooks"
                   // value={fields.name}
                   // error={valid.name}
                   // helperText={valid.name ? errors.name : "Name"}
-                  onChange={this.changeHandler}
+                  onChange={this.changeNoOfBooks}
                   label="noOfBooks"
                   variant="outlined"
                   size="medium"
@@ -382,13 +407,13 @@ class SellerBook extends Component {
                     width: "91%",
                     marginLeft: "-4%",
                   }}
-                  name="name"
-                  id="name"
-                  // value={fields.name}
+                  name="bookDescription"
+                  id="bookDescription"
+                  value={this.state.bookDescription}
                   // error={valid.name}
                   // helperText={valid.name ? errors.name : "Name"}
-                  onChange={this.changeHandler}
-                  label="bookDescription"
+                  onChange={this.changeDescription}
+                  label="Book Description"
                   variant="outlined"
                   size="medium"
                   InputProps={{
@@ -400,12 +425,21 @@ class SellerBook extends Component {
                   }}
                 />
               </div>
+              <div className="choose-file">
+                <div className="choose-file1">
+                  <input
+                    type="file"
+                    onChange={this.onChangeImage}
+                    style={{ marginLeft: "11%", marginTop: "5%" }}
+                  />
+                </div>
+              </div>
               <div className="div-buttons2">
                 <Button
                   id="div-bagbutton2"
                   onClick={() => this.handleAddDialogClick()}
                 >
-                  ADD
+                  ADD NEW BOOK
                 </Button>
               </div>
             </Card>

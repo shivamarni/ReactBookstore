@@ -31,9 +31,9 @@ var SellerController = {
     );
   },
 
-  getprofilelink() {
-    return axios.post(`http://localhost:8085/user/files/link`, null, {
-      headers: { token: token, "Content-type": "application/json " },
+  getBookDetails(bookId) {
+    return axios.get(`http://localhost:8085/book/getbookbyid`, {
+      headers: { bookId: bookId, "Content-type": "application/json " },
     });
   },
   sellerLogin(loginDetails) {
