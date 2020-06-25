@@ -1,9 +1,7 @@
 import axios from "axios";
-//import Forgetpassword from "../Components/Forgetpassword";
-
-//require('dotenv').config()
 
 const token = localStorage.getItem("SellerToken");
+
 var SellerController = {
   sellerRegistration(registrationDetails) {
     return axios.post(
@@ -12,9 +10,16 @@ var SellerController = {
       registrationDetails
     );
   },
+  getallbooks(pageNo) {
+    return axios.get("http://localhost:8085/pagination/booksbyid/", {
+      headers: {
+        pageNo: pageNo,
+        "Content-type": "application/json ",
+      },
+    });
+  },
 
   updateBook(bookDetails, bookId) {
-    //console.log("controller register method ", registrationDetails);
     console.log("inside controller", bookDetails);
     return axios.post(
       `http://localhost:8085/book/updateBook/${bookId}`,
@@ -43,8 +48,6 @@ var SellerController = {
   getallbooks(token) {
     console.log("check here");
     return axios.get(
-      //   process.env.REACT_APP_BASE_URL + `/book/displaybooks/${page}`
-
       "http://localhost:8085/seller/getallsellerbooks",
 
       {

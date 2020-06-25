@@ -185,18 +185,20 @@ class GetAdminBooks extends Component {
           <div>
             <Card id="card_decordialog2" variant="outlined">
               <div className="dia-text"> Are You Sure to Approve Book?</div>
-              <div className="div-can1">
-                <Button
-                  id="div-cancel1"
-                  onClick={() => this.handleApproveBookCancel()}
-                >
-                  cancel
-                </Button>
-              </div>
-              <div className="div-ok">
-                <Button id="div-ok1" onClick={() => this.handleApproveBook()}>
-                  ok
-                </Button>
+              <div className="but">
+                <div className="div-can1">
+                  <Button
+                    id="div-cancel1"
+                    onClick={() => this.handleApproveBookCancel()}
+                  >
+                    cancel
+                  </Button>
+                </div>
+                <div className="div-ok">
+                  <Button id="div-ok1" onClick={() => this.handleApproveBook()}>
+                    ok
+                  </Button>
+                </div>
               </div>
             </Card>
           </div>

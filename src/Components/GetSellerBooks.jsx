@@ -43,9 +43,6 @@ class GetSellerBooks extends Component {
       bookAuthor: "",
       noOfBooks: "",
     };
-    //this.handleAddToBagClick = this.handleAddToBagClick.bind(this);
-
-    //this.handleClose = this.handleClose.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -150,7 +147,7 @@ class GetSellerBooks extends Component {
         />
         <Paper elevation={1} id="paper-book">
           <Paper elevation={1} id="paper-book-below">
-            <div className="book-img-div">
+            <div className="book-img-div1">
               <img src={this.state.item.bookImage} className="book-image" />
             </div>
           </Paper>
@@ -158,9 +155,7 @@ class GetSellerBooks extends Component {
             <div className="div-bookname">{this.state.item.bookName}</div>
             <div className="div-author">by {this.state.item.bookAuthor}</div>
             <div className="div-price">Rs. {this.state.item.bookPrice}</div>
-            {/* <div className="div-quantity">
-              books left {this.state.item.noOfBooks}
-            </div> */}
+
             <div className="div-buttons4">
               <Button
                 id="div-bagbutton1"
@@ -178,7 +173,7 @@ class GetSellerBooks extends Component {
             onClose={this.handleDialogClickaway}
           >
             <div>
-              <Card id="card_decordialog" variant="outlined">
+              <Card id="card_decordialog11" variant="outlined">
                 <div className="dialog_title">Updatebook</div>
                 <div className="box_bookname">
                   <TextField
@@ -188,13 +183,9 @@ class GetSellerBooks extends Component {
                       width: "91%",
                       marginLeft: "-4%",
                     }}
-                    // style={{ width: "95%" }}
-                    // style={{ marginLeft: "-5" }}
                     name="bookName"
                     id="bookName"
                     value={this.state.bookName}
-                    // error={valid.name}
-                    // helperText={valid.name ? errors.name : "Name"}
                     onChange={this.changeName}
                     label="BookName"
                     variant="outlined"
@@ -219,8 +210,6 @@ class GetSellerBooks extends Component {
                     name="bookAuthor"
                     id="bookAuthor"
                     value={this.state.bookAuthor}
-                    // error={valid.name}
-                    // helperText={valid.name ? errors.name : "Name"}
                     onChange={this.changeAuthor}
                     label="BookAuthor"
                     variant="outlined"
@@ -241,8 +230,6 @@ class GetSellerBooks extends Component {
                     name="bookPrice"
                     id="bookPrice"
                     value={this.state.bookPrice}
-                    // error={valid.name}
-                    // helperText={valid.name ? errors.name : "Name"}
                     onChange={this.changePrice}
                     label="BookPrice"
                     variant="outlined"
@@ -262,9 +249,6 @@ class GetSellerBooks extends Component {
                     style={{ marginBottom: "7px" }}
                     name="noOfBooks"
                     id="noOfBooks"
-                    // value={fields.name}
-                    // error={valid.name}
-                    // helperText={valid.name ? errors.name : "Name"}
                     onChange={this.changeNoOfBooks}
                     label="noOfBooks"
                     variant="outlined"
@@ -289,8 +273,6 @@ class GetSellerBooks extends Component {
                     name="bookDescription"
                     id="bookDescription"
                     value={this.state.bookDescription}
-                    // error={valid.name}
-                    // helperText={valid.name ? errors.name : "Name"}
                     onChange={this.changeDescription}
                     label="Book Description"
                     variant="outlined"
@@ -313,9 +295,9 @@ class GetSellerBooks extends Component {
                     />
                   </div>
                 </div>
-                <div className="div-buttons2">
+                <div className="div-buttons9">
                   <Button
-                    id="div-bagbutton2"
+                    id="div-bagbutton9"
                     onClick={() => this.handleUpdateBook()}
                   >
                     UPDATE

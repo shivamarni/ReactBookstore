@@ -1,12 +1,8 @@
 import axios from "axios";
-//import Forgetpassword from "../Components/Forgetpassword";
-
-//require('dotenv').config()
 
 const token = localStorage.getItem("UserToken");
 var adminController = {
   userRegistration(registrationDetails) {
-    // console.log("controller register method ", registrationDetails);
     return axios.post(
       "http://localhost:8085/user/register",
       registrationDetails

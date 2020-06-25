@@ -49,40 +49,6 @@ class SellerBook extends Component {
     this.getcount();
   }
 
-  // cartCount = async () => {
-  //   await CartController.getCartBooksCount()
-  //     .then((response) => {
-  //       this.setState({
-  //         numberOfCartBooks: response.data.data,
-  //       });
-  //       console.log("numberOfCartBooks", this.state.numberOfCartBooks);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
-  // getCartArray = async () => {
-  //   await CartController.getCartBooks()
-  //     .then((response) => {
-  //       console.log(response.data.data);
-  //       console.log(this.state.cartArray);
-  //       this.setState({
-  //         cartArray: response.data.data,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
-  // getapprovedbooks = async () => {
-  //   await BooksController.getallbooks(this.state.pageNumber - 1).then((res) => {
-  //     console.log(res);
-  //     this.setState({ sellerArray: res.data.data });
-  //   });
-  // };
-
   changeName = async (event) => {
     await this.setState({ bookName: event.target.value });
     console.log(this.state.bookName);
@@ -141,79 +107,6 @@ class SellerBook extends Component {
     });
   };
 
-  //   getwishlistarray = async () => {
-  //     await CartController.getallwishlist().then((res) => {
-  //       if (res.status === 200) {
-  //         this.setState({
-  //           wishlistArray: res.data.data,
-  //         });
-  //       }
-  //     });
-  //   };
-
-  //   handleButtonClick = async (item) => {
-  //     await this.setState({
-  //       bookArray: [],
-  //       pageNumber: item,
-  //     });
-  //     let sortState = this.state.visibleSort;
-  //     if (sortState === "Relevance") {
-  //       await BooksController.getallbooks(this.state.pageNumber - 1).then(
-  //         (res) => {
-  //           this.setState({ bookArray: res.data.data });
-  //         }
-  //       );
-  //     } else if (sortState === "Newest Arrivals") {
-  //       await BooksController.getbooksNewest(this.state.pageNumber).then(
-  //         (res) => {
-  //           this.setState({ bookArray: res.data.data });
-  //         }
-  //       );
-  //     } else if (sortState === "Price: High to Low") {
-  //       await BooksController.getbooksPriceDesc(this.state.pageNumber).then(
-  //         (res) => {
-  //           this.setState({ bookArray: res.data.data });
-  //         }
-  //       );
-  //     } else {
-  //       await BooksController.getbooksPriceAsc(this.state.pageNumber).then(
-  //         (res) => {
-  //           this.setState({ bookArray: res.data.data });
-  //         }
-  //       );
-  //     }
-  //   };
-
-  //   handleSortClick = async (item) => {
-  //     await this.setState({ visibleSort: item, bookArray: [] });
-  //     let sortState = this.state.visibleSort;
-  //     if (sortState === "Relevance") {
-  //       await BooksController.getallbooks(this.state.pageNumber - 1).then(
-  //         (res) => {
-  //           this.setState({ bookArray: res.data.data });
-  //         }
-  //       );
-  //     } else if (sortState === "Newest Arrivals") {
-  //       await BooksController.getbooksNewest(this.state.pageNumber - 1).then(
-  //         (res) => {
-  //           this.setState({ bookArray: res.data.data });
-  //         }
-  //       );
-  //     } else if (sortState === "Price: High to Low") {
-  //       await BooksController.getbooksPriceDesc(this.state.pageNumber - 1).then(
-  //         (res) => {
-  //           this.setState({ bookArray: res.data.data });
-  //         }
-  //       );
-  //     } else {
-  //       await BooksController.getbooksPriceAsc(this.state.pageNumber - 1).then(
-  //         (res) => {
-  //           this.setState({ bookArray: res.data.data });
-  //         }
-  //       );
-  //     }
-  //   };
-
   render() {
     let displayBooks = this.state.sellerArray.map((item) => {
       return (
@@ -244,26 +137,11 @@ class SellerBook extends Component {
       );
     });
 
-    // let displaySorts = this.state.sortArray.map((item) => {
-    //   if (item !== this.state.visibleSort) {
-    //     return (
-    //       <div
-    //         onClick={() => {
-    //           this.handleSortClick(item);
-    //         }}
-    //       >
-    //         {item}
-    //       </div>
-    //     );
-    //   }
-    // });
     return (
       <div className="page-container">
         <SellerHeader />
-        {/* <Header numberOfCartBooks={this.state.numberOfCartBooks} /> */}
 
-        {/* <Footer /> */}
-        <div className="outerdiv-books">
+        <div className="outerdiv-books1">
           <div className="content-div">
             <div className="count-sort-div">
               <div className="count-div">
@@ -272,8 +150,6 @@ class SellerBook extends Component {
               </div>
               <div className="sort-div">
                 <div class="dropdown">
-                  {/* <button class="dropbtn"> */}
-                  {/* <div className="visiblesort-div1"> */}
                   <div>
                     {" "}
                     <Button
@@ -283,10 +159,6 @@ class SellerBook extends Component {
                       ADD Books
                     </Button>
                   </div>
-                  {/* <div className="arrow-symbol-div">⌄</div> */}
-                  {/* </div> */}
-                  {/* </button> */}
-                  {/* <div class="dropdown-content">{displaySorts}</div> */}
                 </div>
               </div>
             </div>
@@ -314,8 +186,6 @@ class SellerBook extends Component {
                   name="bookName"
                   id="bookName"
                   value={this.state.bookName}
-                  // error={valid.name}
-                  // helperText={valid.name ? errors.name : "Name"}
                   onChange={this.changeName}
                   label="BookName"
                   variant="outlined"
@@ -340,8 +210,6 @@ class SellerBook extends Component {
                   name="bookAuthor"
                   id="bookAuthor"
                   value={this.state.bookAuthor}
-                  // error={valid.name}
-                  // helperText={valid.name ? errors.name : "Name"}
                   onChange={this.changeAuthor}
                   label="BookAuthor"
                   variant="outlined"
@@ -362,8 +230,6 @@ class SellerBook extends Component {
                   name="bookPrice"
                   id="bookPrice"
                   value={this.state.bookPrice}
-                  // error={valid.name}
-                  // helperText={valid.name ? errors.name : "Name"}
                   onChange={this.changePrice}
                   label="BookPrice"
                   variant="outlined"
@@ -383,9 +249,6 @@ class SellerBook extends Component {
                   style={{ marginBottom: "7px" }}
                   name="noOfBooks"
                   id="noOfBooks"
-                  // value={fields.name}
-                  // error={valid.name}
-                  // helperText={valid.name ? errors.name : "Name"}
                   onChange={this.changeNoOfBooks}
                   label="noOfBooks"
                   variant="outlined"
@@ -410,8 +273,6 @@ class SellerBook extends Component {
                   name="bookDescription"
                   id="bookDescription"
                   value={this.state.bookDescription}
-                  // error={valid.name}
-                  // helperText={valid.name ? errors.name : "Name"}
                   onChange={this.changeDescription}
                   label="Book Description"
                   variant="outlined"
@@ -440,6 +301,14 @@ class SellerBook extends Component {
                   onClick={() => this.handleAddDialogClick()}
                 >
                   ADD NEW BOOK
+                </Button>
+              </div>
+              <div className="div-buttons2">
+                <Button
+                  id="div-bagbutton10"
+                  onClick={() => this.handleAddDialogClick()}
+                >
+                  CLOSE
                 </Button>
               </div>
             </Card>
