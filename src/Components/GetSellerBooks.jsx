@@ -151,7 +151,7 @@ class GetSellerBooks extends Component {
               <img src={this.state.item.bookImage} className="book-image" />
             </div>
           </Paper>
-          <div className="outer-details-div">
+          <div className="outer-details-div2">
             <div className="div-bookname">{this.state.item.bookName}</div>
             <div className="div-author">by {this.state.item.bookAuthor}</div>
             <div className="div-price">Rs. {this.state.item.bookPrice}</div>

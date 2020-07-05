@@ -74,19 +74,34 @@ class SellerBook extends Component {
     this.setState({ added: this.state.file.name });
   };
 
+  handleButtonClick = async (item) => {
+    await this.setState({
+      bookArray: [],
+      pageNumber: item,
+    });
+    console.log("page number", this.state.pageNumber);
+    await BooksController.getallsellerbooks(this.state.pageNumber - 1).then(
+      (res) => {
+        this.setState({ sellerArray: res.data.data });
+      }
+    );
+  };
+
   getsellerbooks = async () => {
     console.log("inside methioddddddddd");
-    await BooksController.getallsellerbooks().then((res) => {
-      console.log(res);
+    await BooksController.getallsellerbooks(this.state.pageNumber - 1).then(
+      (res) => {
+        console.log(res);
 
-      console.log("hello", res.data.data);
-      this.setState({ sellerArray: res.data.data });
-    });
+        console.log("hello", res.data.data);
+        this.setState({ sellerArray: res.data.data });
+      }
+    );
   };
 
   getcount = async () => {
     let tempPageArr = [];
-    await BooksController.getcountofbooks().then((res) => {
+    await BooksController.getcountofsellerbooks().then((res) => {
       console.log("check here ", res.data.data);
       this.setState({
         count: res.data.data,

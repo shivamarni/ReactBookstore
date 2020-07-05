@@ -29,11 +29,80 @@ class AdminBooks extends Component {
 
   componentDidMount() {
     this.getapprovedbooks();
+    this.getcount();
+    this.getCartArray();
+    this.getwishlistarray();
+    this.cartCount();
   }
+
+  cartCount = async () => {
+    await CartController.getCartBooksCount()
+      .then((response) => {
+        this.setState({
+          numberOfCartBooks: response.data.data,
+        });
+        console.log("numberOfCartBooks", this.state.numberOfCartBooks);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  getCartArray = async () => {
+    await CartController.getCartBooks()
+      .then((response) => {
+        console.log(response.data.data);
+        console.log(this.state.cartArray);
+        this.setState({
+          cartArray: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   getapprovedbooks = async () => {
     await BooksController.getallbooks(this.state.pageNumber - 1).then((res) => {
       console.log(res);
+      this.setState({ bookArray: res.data.data });
+    });
+  };
+
+  getcount = async () => {
+    let tempPageArr = [];
+    await BooksController.getcountofbooks().then((res) => {
+      console.log("check here ", res.data.data);
+      this.setState({
+        count: res.data.data,
+        pages: res.data.data / 8,
+      });
+      for (let i = 0; i < this.state.pages; i++) {
+        tempPageArr.push(i + 1);
+      }
+      this.setState({
+        pageArray: tempPageArr,
+      });
+    });
+  };
+
+  getwishlistarray = async () => {
+    await CartController.getallwishlist().then((res) => {
+      if (res.status === 200) {
+        this.setState({
+          wishlistArray: res.data.data,
+        });
+      }
+    });
+  };
+
+  handleButtonClick = async (item) => {
+    await this.setState({
+      bookArray: [],
+      pageNumber: item,
+    });
+
+    await BooksController.getallbooks(this.state.pageNumber - 1).then((res) => {
       this.setState({ bookArray: res.data.data });
     });
   };
@@ -70,45 +139,12 @@ class AdminBooks extends Component {
       );
     });
 
-    let displaySorts = this.state.sortArray.map((item) => {
-      if (item !== this.state.visibleSort) {
-        return (
-          <div
-            onClick={() => {
-              this.handleSortClick(item);
-            }}
-          >
-            {item}
-          </div>
-        );
-      }
-    });
     return (
       <div className="page-container">
         <AdminHeader />
-        {/* <Header numberOfCartBooks={this.state.numberOfCartBooks} /> */}
 
-        {/* <Footer /> */}
-        <div className="outerdiv-books">
+        <div className="outerdiv-books2">
           <div className="content-div">
-            {/* <div className="count-sort-div">
-              <div className="count-div">
-                Books
-                <div className="items-div">( {this.state.count}Items)</div>
-              </div>
-              <div className="sort-div">
-                <div class="dropdown">
-                  <button class="dropbtn">
-                    <div className="visiblesort-div">
-                      <div> Sort by {this.state.visibleSort}</div>
-                      <div className="arrow-symbol-div">⌄</div>
-                    </div>
-                  </button>
-                  <div class="dropdown-content">{displaySorts}</div>
-                </div>
-              </div>
-            </div> */}
-
             <div className="content-wrapper1">{displayBooks}</div>
             <div className="div-outer-page-buttons">{displayPages}</div>
             <Footer />

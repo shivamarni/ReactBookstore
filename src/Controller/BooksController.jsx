@@ -29,12 +29,13 @@ var controller = {
     );
   },
 
-  getallsellerbooks() {
+  getallsellerbooks(pageNo) {
     return axios.get(
       //   process.env.REACT_APP_BASE_URL + `/book/displaybooks/${page}`
-      "http://localhost:8085/seller/getallsellerbooks",
+      "http://localhost:8085/pagination/sellerbooks",
       {
         headers: {
+          pageNo: pageNo,
           token: token,
           "Content-type": "application/json ",
         },
@@ -51,6 +52,14 @@ var controller = {
 
   getcountofbooks() {
     return axios.get("http://localhost:8085/book/getbookcount");
+  },
+  getcountofsellerbooks() {
+    return axios.get("http://localhost:8085/book/getsellerbookcount", {
+      headers: {
+        token: token,
+        "Content-type": "application/json ",
+      },
+    });
   },
   getbooksPriceDesc(pageNo) {
     return axios.get(
