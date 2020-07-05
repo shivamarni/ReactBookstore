@@ -8,6 +8,16 @@
   margin-top: 12vh;
   cursor: pointer;
 }
+.outerdiv-books2 {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 720vh;
+  margin-top: 12vh;
+  cursor: pointer;
+}
 
 #profile-paper {
   width: 255px;
@@ -364,7 +374,7 @@
   color: #ffffff;
   text-transform: uppercase;
   opacity: 1;
-  background: #3032a0 0% 0% no-repeat padding-box;
+  background: #a03037 0% 0% no-repeat padding-box;
   border-radius: 2px;
   border: none;
   cursor: pointer;
@@ -491,6 +501,13 @@
   width: 100%;
   margin-left: 25%;
 }
+.outer-details-div2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 25%;
+  margin-top: 4%;
+}
 .outer-details-div1 {
   display: flex;
   flex-direction: column;
@@ -550,6 +567,7 @@
   margin: 0 auto;
   height: 142vh;
   z-index: 0;
+  margin-left: 16%;
   // overflow: hidden;
 }
 #appbar-card {
@@ -888,7 +906,7 @@
   display: flex;
   width: 20%;
   justify-content: flex-end;
-  margin-top: 0px;
+  margin-top: 2px;
   margin-right: -8%;
 
   cursor: pointer;
@@ -1049,9 +1067,9 @@
   // position: fixed;
   color: rgba(255, 255, 255, 0.911);
   background-color: #2e1d1e;
-  width: 130%;
+  width: 135%;
   height: 8vh;
-  margin-left: -14%;
+  margin-left: -17%;
 }
 
 .footer-text {
@@ -1278,7 +1296,7 @@
     display: flex;
     width: 30%;
     justify-content: end;
-    // margin-top: 3px;
+
     padding-top: 3px;
     margin-right: -4px;
   }
